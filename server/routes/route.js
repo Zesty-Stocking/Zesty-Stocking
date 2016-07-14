@@ -1,7 +1,4 @@
 module.exports = function(app) {
-  // API ROUTES ===========================================
-  
-
   // FRONTEND ROUTES ======================================
 
   // catch-all route for client-side routing
