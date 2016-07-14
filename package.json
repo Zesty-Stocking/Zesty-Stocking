@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/daredia/Zesty-Stocking/issues"
   },
-  "homepage": "https://github.com/daredia/Zesty-Stocking#readme"
+  "homepage": "https://github.com/daredia/Zesty-Stocking#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mariasql": "^0.2.6",
+    "sequelize": "^3.23.4"
+  }
 }
