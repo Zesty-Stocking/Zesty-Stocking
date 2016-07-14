@@ -2,9 +2,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
+var routes = require('./routes/index');
 
 var app = express();
-
 
 
 // CONFIGURATION ===========================================
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../client'));
 
 // ROUTES ==================================================
-var routes = require('./routes/route');
+
 app.use('*', routes);
 // app.use('/api', api); // later create /routes/api.js for holding our api routes
 
