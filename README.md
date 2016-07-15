@@ -1,8 +1,17 @@
 # Zesty-Stocking
 
+To create the database, do the following:
+
+      $ mysql -u root -p
+      MariaDB [(none)]> create database zestydb;
+      MariaDB [(none)]> use zestydb;
+      MariaDB [(none)]> exit;
+
+
+
 To start the server, run 
 
-      node server/server.js
+      npm start
 
 
-# TODO: turn this into an npm start script with nodemon
+
