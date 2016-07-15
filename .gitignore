@@ -1,5 +1,9 @@
+.DS_Store
+
 # Dependency directories
 node_modules/
 bower_components/
-db/
 client/lib
+db/* # ignores everything inside db/ except...
+!db/index.js # don't ignore this file inside db/
+
