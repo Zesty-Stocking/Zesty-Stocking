@@ -10,7 +10,6 @@ var app = express();
 // CONFIGURATION ===========================================
 
 var db = require('./db');
-// TODO: connect to db
 
 app.use(bodyParser.json()); 
 // parse application/x-www-form-urlencoded
