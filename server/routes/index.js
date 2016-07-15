@@ -1,9 +1,12 @@
-module.exports = function(app) {
-  // FRONTEND ROUTES ======================================
+var express = require('express');
 
-  // catch-all route for client-side routing
-  app.get('*', function(req, res) {
-    res.sendFile('./index.html');
-  });
+var router = express.Router();
 
-};
+// USER-FACING ROUTES ======================================
+
+// catch-all route for client-side routing
+router.get('*', function(req, res) {
+  res.sendFile('/index.html');
+});
+
+module.exports = router;
