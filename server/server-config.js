@@ -9,7 +9,7 @@ var app = express();
 
 // CONFIGURATION ===========================================
 
-var db = require('./db');
+// var db = require('./db');
 
 app.use(bodyParser.json()); 
 // parse application/x-www-form-urlencoded
