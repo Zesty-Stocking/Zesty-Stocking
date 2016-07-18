@@ -22,7 +22,9 @@
     "express": "^4.14.0",
     "mariasql": "^0.2.6",
     "mysql": "^2.11.1",
-    "nodemon": "^1.9.2",
     "sequelize": "^3.23.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
   }
 }
