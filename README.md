@@ -8,11 +8,6 @@ To create the database, do the following:
       MariaDB [(none)]> exit;
 
 
-Server setup:
-
-      $ npm install -g nodemon
-
-
 
 
 To start the local server and db ([MariaDB](https://mariadb.com/kb/en/mariadb/starting-and-stopping-mariadb/)), run 
