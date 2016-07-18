@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/../client'));
 
 // ROUTES ==================================================
 
-app.use('*', routes);
+app.use('/', routes);
 // app.use('/api', api); // later create /routes/api.js for holding our api routes
 
 
