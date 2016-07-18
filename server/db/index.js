@@ -1,9 +1,18 @@
 var mariasql = require('mariasql');
 var Sequelize = require('sequelize');
 
-var db = new Sequelize('zestydb', 'root', 'root', {
-  dialect: 'mariadb'
-});
+var options = {
+  dialect: 'mariadb',
+  logging: true
+};
+
+if (process.env.JAWSDB_MARIA_URL) {
+  // app is running on Heroku
+  var db = new Sequelize(process.env.JAWSDB_MARIA_URL, options);
+} else {
+  // app is running on local
+  var db = new Sequelize('zestydb', 'root', 'root', options);  
+}
 
 // DEFINE MODELS =================================
 
