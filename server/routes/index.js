@@ -1,9 +1,17 @@
-module.exports = function(app) {
-  // FRONTEND ROUTES ======================================
+var express = require('express');
 
-  // catch-all route for client-side routing
-  app.get('*', function(req, res) {
-    res.sendFile('./index.html');
+var router = express.Router();
+
+var db = require('../db');
+
+// USER-FACING ROUTES ======================================
+
+// catch-all route for client-side routing
+router.get('/db', function(req, res) {
+  console.log('inside db route');
+  db.User.findAll().then(function(users) {
+    res.json(users);
   });
+});
 
-};
+module.exports = router;
