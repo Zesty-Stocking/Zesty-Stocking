@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var db = require('../db');
 
+
 var router = express.Router();
 
 // API-FACING ROUTES ======================================
@@ -21,7 +22,7 @@ router.route('/users')
     user.location = req.body.loction;
     user.avatarUrl = req.body.avatarUrl;
 
-    user.username.find(function(err, found) {
+    db.User.findById(req.params.username, function(err, found) {
       if(err)
         res.send(err);
       if(found)
@@ -33,11 +34,11 @@ router.route('/users')
       if(err)
         res.send(err);
       //What should we send back upon creation?
-      res.json(user); 
+      res.json(user);
     });
 
     .get(function(req, res) {
-      User.findAll().then(function(users) {
+      db.User.findAll().then(function(users) {
         res.json(users);
       });
     });
@@ -46,14 +47,14 @@ router.route('/users')
 
   router.route('/users/:user_id')
     .get(function(req, res) {
-      User.findById(req.params.user_id, function(err, user) {
+      db.User.findById(req.params.user_id, function(err, user) {
         if(err)
           res.send(err);
         res.json(user);
       })
 
       .put(function(req, res) {
-        User.findById(req.params.user_id, function(err, user) {
+        db.User.findById(req.params.user_id, function(err, user) {
           if(err)
             res.send(err);
             //What would we want to be letting the user change here?
@@ -72,5 +73,22 @@ router.route('/users')
 router.route('/messages')
 
   .post(function(req, res) {
+    var message = new Message();
 
-  })
+    message.text = req.body.text;
+    //do we need to set the likes to 0 here or did that already happen in the model upon creation?
+
+    message.save(function(err) {
+      if(err)
+        res.send(err);
+
+      res.json(message);
+    });
+
+  .get(function(req, res) {
+    db.Message.findAll.then(function(messages) {
+      res.json(messages);
+    });
+  });
+
+});
