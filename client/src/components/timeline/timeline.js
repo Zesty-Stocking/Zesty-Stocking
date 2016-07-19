@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import Message from '../message/view';
+import { border } from '../../../helpers/scaffolding';
 
 var Timeline = ({ messages }) => {
   var renderedMessage = ({ user, text, likes }, index) => {
@@ -25,7 +26,7 @@ var Timeline = ({ messages }) => {
   };
 
   return (
-    <View style={ styles.container }>
+    <View style={ [ styles.container, border('red') ] }>
       <Text>Messages</Text>
 
       <View style={ styles.collection  }>
