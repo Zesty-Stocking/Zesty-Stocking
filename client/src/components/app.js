@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import Timeline from './timeline/timeline';
+import { border } from '../../helpers/scaffolding';
 
 var dummyMessages = [
   { user: 'Bronson', text: 'Nom nom nom', likes: 1 },
@@ -22,7 +23,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <View style={ styles.container }>
+      <View style={ [ styles.container, border('yellow') ] }>
         <Timeline messages={ this.state.messages } />
       </View>
     );

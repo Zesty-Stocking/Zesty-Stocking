@@ -4,10 +4,11 @@ import {
   Text,
   View
 } from 'react-native';
+import { border } from '../../../helpers/scaffolding';
 
 var Message = ({ user, text, likes }) => {
   return (
-    <View style={ styles.container }>
+    <View style={ [ styles.container, border('green') ] }>
       <Text style={ styles.user }>
         { user }
       </Text>
