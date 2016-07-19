@@ -11,10 +11,12 @@ if (process.env.JAWSDB_MARIA_URL) {
   var db = new Sequelize(process.env.JAWSDB_MARIA_URL, options);
 } else {
   // app is running on local
-  var db = new Sequelize('zestydb', 'root', 'root', options);  
+  var db = new Sequelize('zestydb', 'root', 'root', options);
 }
 
 // DEFINE MODELS =================================
+
+//NOW MOVED TO OWN FOLDER-----
 
 var User = db.define('User', {
   username: Sequelize.STRING,
@@ -30,7 +32,7 @@ var User = db.define('User', {
   starred: ,
   organizations: ,
   gists: ,
-  company: 
+  company:
    */
 
 });
@@ -56,6 +58,3 @@ Message.sync(
 
 exports.User = User;
 exports.Message = Message;
-
-
-
