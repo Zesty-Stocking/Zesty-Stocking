@@ -4,16 +4,26 @@ import {
   Text,
   View
 } from 'react-native';
-import Message from './message/view';
+import Timeline from './timeline/timeline';
+
+var dummyMessages = [
+  { user: 'Bronson', text: 'Nom nom nom', likes: 1 },
+  { user: 'Fifo', text: 'First in, first out. I mean: Woof!', likes: 1 }
+];
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      messages: dummyMessages
+    };
+  }
+
   render() {
     return (
       <View style={ styles.container }>
-        <Text style={ styles.welcome }>
-          Message
-        </Text>
-        <Message user={ 'Bronson' } text={ 'Nom nom nom' } likes={ 1 } />
+        <Timeline messages={ this.state.messages } />
       </View>
     );
   }
