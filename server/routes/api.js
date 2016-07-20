@@ -22,7 +22,7 @@ router.post('/users', function(req, res) {
   db.User.find( {where: {username: req.body.username}} )
     .then(function(found) {
     if(found) {
-      res.send('User Already exsists!');
+      res.send(found);
     } else {
       console.log(req.body);
       var user = db.User.create({
