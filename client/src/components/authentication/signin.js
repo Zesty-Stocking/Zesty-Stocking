@@ -22,7 +22,7 @@ class Signin extends Component {
     return (
       <View style={ styles.container }>
         <Text style={ styles.title }>Zesty Stocking</Text>
-        <Button text={ 'Sign in with Github' } onPress={ onPressSignin } />
+        <Button text={ 'Sign in with Github' } onPress={ this.onPressSignin } />
       </View>
     );
   }
