@@ -6,9 +6,10 @@ import {
 
 class OAuthWebView extends Component {
 	render() {
+		console.log(this.props);
 		return (
 			<WebView
-				source={{uri: 'https://github.com/facebook/react-native'}}
+				source={{uri: this.props.route.url}}
 				style={styles.webview} />
 		);
 	}

@@ -6,6 +6,9 @@ import {
 } from 'react-native';
 import Button from '../common/button';
 
+//This is where we put our backend oauth endpoint url
+const OAuthURL = 'https://github.com/facebook/react-native';
+
 class Signin extends Component {
 
 	constructor(props) {
@@ -23,7 +26,7 @@ class Signin extends Component {
 	onPress() {
 		// Log the user in
 		console.log('clicked!');
-		this.props.navigator.push({name: 'oauthwebview'});
+		this.props.navigator.push({name: 'oauthwebview', url: OAuthURL});
 	}
 };
 
