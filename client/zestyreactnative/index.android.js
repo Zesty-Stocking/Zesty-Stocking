@@ -1,9 +1,4 @@
-import React, {Component} from 'react';
+import { AppRegistry } from 'react-native';
+import client from './src/components/app';
 
-import {
-  AppRegistry
-} from 'react-native';
-
-import Main from './src/main';
-
-AppRegistry.registerComponent('zestyreactnative', () => Main);
+AppRegistry.registerComponent('client', () => client);
