@@ -31,7 +31,7 @@ router.post('/users', function(req, res) {
         location: req.body.location || null,
         avatarUrl: req.body.avatarUrl
       }).then(function() {
-        res.json(user);
+        res.send(user);
       });
     }
   });
@@ -57,7 +57,8 @@ router.post('/messages', function(req, res) {
     UserId: req.body.UserId,
     text: req.body.text,
   }).then(function() {
-    res.json(message);
+    console.log(message.dataVales);
+    res.send(message);
   });
 });
 
