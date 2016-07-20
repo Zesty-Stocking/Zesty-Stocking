@@ -8,7 +8,7 @@ import Button from '../common/button';
 
 class Signin extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.onPressSignin = this.onPressSignin.bind(this);
   }
