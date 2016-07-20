@@ -1,0 +1,3 @@
+// Put your GitHub API keys here!
+exports.GITHUB_CLIENT_ID = 'YOUR_CLIENT_ID_HERE';
+exports.GITHUB_CLIENT_SECRET = 'YOUR_CLIENT_SECRET_HERE';
