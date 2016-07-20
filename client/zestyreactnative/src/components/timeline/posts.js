@@ -15,8 +15,7 @@ var Posts = ({ messages }) => {
         text={ text }
         likes={ likes }
         key={ index }
-        style={ styles.member }
-      />
+        style={ styles.member } />
     );
   };
 
