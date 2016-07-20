@@ -25,12 +25,12 @@ router.post('/users', function(req, res) {
       res.send(found);
     } else {
       console.log(req.body);
-      var user = db.User.create({
+      db.User.create({
         username: req.body.username,
         name: req.body.name,
         location: req.body.location,
         avatarUrl: req.body.avatarUrl
-      }).then(function() {
+      }).then(function(user) {
         res.json(user);
       })
     }
@@ -53,10 +53,10 @@ router.get('/messages', function(req, res) {
 
 router.post('/messages', function(req, res) {
   console.log('inside of message post api');
-  var message = db.Message.create({
+  db.Message.create({
     text: req.body.text,
     likes: 0
-  }).then(function() {
+  }).then(function(message) {
     res.json(message)
   });
 });
