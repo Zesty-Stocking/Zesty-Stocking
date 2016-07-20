@@ -19,15 +19,16 @@ router.get('/users', function(req, res) {
 
 router.post('/users', function(req, res) {
   console.log('inside post for users api')
-  db.User.find( {username: req.body.username} )
+  db.User.find( {where: {username: req.body.username}} )
     .then(function(found) {
     if(found) {
       res.send('User Already exsists!');
     } else {
+      console.log(req.body);
       var user = db.User.create({
         username: req.body.username,
         name: req.body.name,
-        location: req.body.loction,
+        location: req.body.location,
         avatarUrl: req.body.avatarUrl
       }).then(function() {
         res.json(user);
