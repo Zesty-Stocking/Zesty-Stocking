@@ -57,7 +57,6 @@ router.post('/messages', function(req, res) {
     UserId: req.body.UserId,
     text: req.body.text,
   }).then(function() {
-    console.log(message.dataVales);
     res.send(message);
   });
 });

@@ -20,7 +20,13 @@ module.exports = {
             res.send(error);
           callback(user);
         });
-  }
+  },
+  fetch_from_db: function(entry, req, res) {
+    db.entry.findAll().then(function(entry) {
+      res.json(entry);
+    });
+  },
+
   //TODO: Add more useful methods that will be used many times
-    //add_to_db, fetch_from_db...
+    //fetch_from_db...
 };
