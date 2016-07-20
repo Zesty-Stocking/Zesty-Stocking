@@ -5,9 +5,9 @@ import {
   Text,
   View
 } from 'react-native';
-import Signin from './authentication/signin';
-import Posts from './timeline/posts';
-import { border } from '../../helpers/scaffolding';
+import Signin from './components/authentication/signin';
+import Posts from './components/timeline/posts';
+import { border } from '../helpers/scaffolding';
 
 var dummyMessages = [
   { user: 'Bronson', text: 'Nom nom nom', likes: 1 },
