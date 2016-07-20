@@ -15,9 +15,6 @@ if (process.env.JAWSDB_MARIA_URL) {
 }
 
 // DEFINE MODELS =================================
-
-//NOW MOVED TO OWN FOLDER-----
-
 var User = db.define('User', {
   username: Sequelize.STRING,
   name: Sequelize.STRING,
