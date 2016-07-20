@@ -7,25 +7,24 @@ import {
 import Button from '../common/button';
 
 class Signin extends Component {
-  constructor(props) {
+
+	constructor(props) {
     super(props);
-
-    this.onPressSignin = this.onPressSignin.bind(this);
+    this.onPress = this.onPress.bind(this);
   }
-
-  onPressSignin() {
-    console.log('clicked!');
-    this.props.navigator.push({ name: 'posts' });
-  }
-
   render () {
-    return (
-      <View style={ styles.container }>
-        <Text style={ styles.title }>Zesty Stocking</Text>
-        <Button text={ 'Sign in with Github' } onPress={ this.onPressSignin } />
-      </View>
-    );
-  }
+		return (
+			<View style={styles.container}>
+				<Text style={styles.title}>Zesty Stocking</Text>
+				<Button text={'Sign in with Github'} onPress={this.onPress} />
+			</View>
+		);
+	}
+	onPress() {
+		// Log the user in
+		console.log('clicked!');
+		this.props.navigator.push({name: 'oauthwebview'});
+	}
 };
 
 var styles = StyleSheet.create({
