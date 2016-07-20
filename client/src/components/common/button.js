@@ -7,18 +7,16 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-var Button = ({ buttonText, onPress }) => {
-  render() {
-    return (
-      <TouchableHighlight
-        style={ styles.button }
-        underlayColor={ 'gray' }
-        onPress={ onPress }
-      >
-        <Text style={ styles.buttonText }>{ text }</Text>
-      </TouchableHighlight>
-    );
-  }
+var Button = ({ text, onPress }) => {
+  return (
+    <TouchableHighlight
+      style={ styles.button }
+      underlayColor={ 'gray' }
+      onPress={ onPress }
+    >
+      <Text style={ styles.buttonText }>{ text }</Text>
+    </TouchableHighlight>
+  );
 };
 
 var styles = StyleSheet.create({
