@@ -12,9 +12,6 @@ class OAuthWebView extends Component {
 		var leftButtonConfig = {
 		    title: 'Back',
 		    handler: this.onBackPress.bind(this)
-		    // handler: function onBack() {
-		    //   alert('go back!');
-		    // }
 		  };
 
 		var titleConfig = {
@@ -46,6 +43,7 @@ class OAuthWebView extends Component {
 		console.log(navState);
 	}
 	onBackPress() {
+		// alert('go back!');
 		this.props.navigator.pop();
 	}
 }

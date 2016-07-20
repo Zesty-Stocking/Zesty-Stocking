@@ -7,8 +7,8 @@ import {
 import Button from '../common/button';
 
 //This is where we put our backend oauth endpoint url
-// const OAuthURL = 'http://localhost:4568/auth/github';
-const OAuthURL = 'http://github.com';
+const OAuthURL = 'http://localhost:4568/auth/github';
+// const OAuthURL = 'http://github.com';
 
 class Signin extends Component {
 
