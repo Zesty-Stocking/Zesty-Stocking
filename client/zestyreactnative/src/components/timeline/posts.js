@@ -7,32 +7,42 @@ import {
 import Message from '../message/view';
 import { border } from '../../../helpers/scaffolding';
 
-var Posts = ({ messages }) => {
-  var renderedMessage = ({ user, text, likes }, index) => {
-    return (
-      <Message
-        user={ user }
-        text={ text }
-        likes={ likes }
-        key={ index }
-        style={ styles.member } />
-    );
-  };
+class Posts extends Component {
+  constructor(props) {
+    super(props);
 
-  var listOfMessages = () => {
+    this.listOfMessages = this.listOfMessages.bind(this);
+  }
+
+  listOfMessages() {
     messages = messages || [];
+
+    var renderedMessage = ({ user, text, likes }, index) => {
+      return (
+        <Message
+          user={ user }
+          text={ text }
+          likes={ likes }
+          key={ index }
+          style={ styles.member }
+        />
+      );
+    };
+
     return messages.map(renderedMessage);
-  };
+  }
 
-  return (
-    <View style={ [ styles.container, border('red') ] }>
-      <Text>Messages</Text>
+  render() {
+    return (
+      <View style={ [ styles.container, border('red') ] }>
+        <Text>Messages</Text>
 
-      <View style={ styles.collection  }>
-        { listOfMessages() }
+        <View style={ styles.collection  }>
+          { this.listOfMessages() }
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 var styles = StyleSheet.create({
@@ -44,4 +54,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default Posts
+export default Posts;
