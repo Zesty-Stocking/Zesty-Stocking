@@ -39,3 +39,8 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+
+# This is a Windows initiation script. Git would not let me add it to the staging
+# area. Was getting this error:
+# `fatal: CRLF would be replaced by LF in client/android/gradlew.bat.`
+gradlew.bat
