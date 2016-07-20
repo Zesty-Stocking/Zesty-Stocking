@@ -6,7 +6,6 @@ import {
   View
 } from 'react-native';
 import Signin from './authentication/signin';
-import Timeline from './timeline/timeline';
 import Posts from './timeline/posts';
 import { border } from '../../helpers/scaffolding';
 
@@ -52,7 +51,7 @@ export default class App extends Component {
   render() {
     return (
       <View style={ [ styles.container, border('yellow') ] }>
-        <Timeline messages={ this.state.messages } />
+        <Posts messages={ this.state.messages } />
       </View>
     );
   }
