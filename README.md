@@ -1,12 +1,18 @@
 # Zesty-Stocking
 
-To create the database, do the following:
+Install dependencies:
+
+      $ npm install
+      
+Then [install MariaDB](https://mariadb.com/kb/en/mariadb/building-mariadb-on-mac-os-x-using-homebrew/)
+  
+
+Create the database:
 
       $ mysql -u root -p
       MariaDB [(none)]> create database zestydb;
       MariaDB [(none)]> use zestydb;
       MariaDB [(none)]> exit;
-
 
 
 
