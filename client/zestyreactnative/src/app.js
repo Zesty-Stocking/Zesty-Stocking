@@ -5,8 +5,11 @@ import {
   Text,
   View
 } from 'react-native';
+
 import Signin from './components/authentication/signin';
 import Posts from './components/timeline/posts';
+import OAuthWebView from './components/webviews/oauthwebview';
+
 import { border } from '../helpers/scaffolding';
 
 var dummyMessages = [
@@ -17,7 +20,8 @@ var dummyMessages = [
 var ROUTES = {
   // keys with route name, maps to value of actual component to display
   signin: Signin,
-  posts: Posts
+  posts: Posts,
+  oauthwebview: OAuthWebView
 }
 
 class App extends Component {
@@ -40,10 +44,7 @@ class App extends Component {
         style={ [ styles.container, border('yellow') ] }
         initialRoute={ { name: 'signin' } }
         renderScene={ this.renderScene }
-        configureScene={ () => {
-          return Navigator.SceneConfigs.FloatFromRight;
-        } }
-      />
+        configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } } />
     );
   }
 }
