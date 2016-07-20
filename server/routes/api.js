@@ -11,14 +11,14 @@ var Sequelize = require('sequelize');
 
 
 router.get('/users', function(req, res) {
-  console.log('inside API route')
+  console.log('inside API route');
   db.User.findAll().then(function(users) {
     res.json(users);
   });
 });
 
 router.post('/users', function(req, res) {
-  console.log('inside post for users api')
+  console.log('inside post for users api');
   db.User.find( {where: {username: req.body.username}} )
     .then(function(found) {
     if(found) {
@@ -28,13 +28,13 @@ router.post('/users', function(req, res) {
       var user = db.User.create({
         username: req.body.username,
         name: req.body.name,
-        location: req.body.location,
+        location: req.body.location || null,
         avatarUrl: req.body.avatarUrl
       }).then(function() {
         res.json(user);
-      })
+      });
     }
-  })
+  });
 });
 
 router.get('/users:user_id', function(req, res) {
@@ -42,7 +42,7 @@ router.get('/users:user_id', function(req, res) {
     if(err)
       res.send(err);
     res.json(user);
-  })
+  });
 });
 
 router.get('/messages', function(req, res) {
@@ -54,10 +54,10 @@ router.get('/messages', function(req, res) {
 router.post('/messages', function(req, res) {
   console.log('inside of message post api');
   var message = db.Message.create({
+    UserId: req.body.UserId,
     text: req.body.text,
-    likes: 0
   }).then(function() {
-    res.json(message)
+    res.json(message);
   });
 });
 

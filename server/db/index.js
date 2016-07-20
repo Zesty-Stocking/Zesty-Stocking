@@ -16,10 +16,11 @@ if (process.env.JAWSDB_MARIA_URL) {
 
 // DEFINE MODELS =================================
 var User = db.define('User', {
-  username: Sequelize.STRING,
-  name: Sequelize.STRING,
-  location: Sequelize.STRING,
-  avatarUrl: Sequelize.STRING,
+  username: { type: Sequelize.STRING, allowNull: false },
+  name: { type: Sequelize.STRING, defaultValue: null },
+  location: { type: Sequelize.STRING, defaultValue: null },
+  avatarUrl:  { type: Sequelize.STRING, defaultValue: null },
+  //Maybe have a simple jpeg as the defaultValue for avatarUrl??
   accessToken: Sequelize.STRING
   /*
   followers: ,
@@ -36,8 +37,8 @@ var User = db.define('User', {
 });
 
 var Message = db.define('Message', { // user-facing name: 'byte'
-  text: Sequelize.STRING,
-  likes: Sequelize.INTEGER // user-facing name: 'groks'
+  text: { type: Sequelize.STRING, defaultValue: null },
+  likes: { type: Sequelize.INTEGER, defaultValue: 0 } // user-facing name: 'groks'
   /*
   media: // images, repos, links, mentions
    */
