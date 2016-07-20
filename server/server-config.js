@@ -45,9 +45,26 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      // TODO: associate the GitHub profile with a user record in database,
-      // and return that user instead.
-      return done(null, profile);
+      // Associate the GitHub profile with a user record in database,
+      // and return that user
+      db.User.find( {where: {username: profile.username}} )
+        .then(function(found) {
+          if (found) {
+            console.log('existing user was found:', found);
+            return done(null, found);
+          } else {
+            db.User.create({
+              username: profile.username,
+              name: profile.displayName,
+              location: profile._json.location,
+              avatarUrl: profile._json.avatar_url
+            }).then(function(user) {
+              console.log('new user created:', user);
+              return done(null, user);
+            });
+          }
+        }
+      );
     });
   }
 ));

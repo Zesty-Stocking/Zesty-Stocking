@@ -4,8 +4,6 @@
 node_modules/
 bower_components/
 client/lib
-db/* # ignores everything inside db/ except...
-!db/index.js # don't ignore this file inside db/
 
 ## API keys ##
 server/config/github.js
