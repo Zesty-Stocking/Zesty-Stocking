@@ -3,7 +3,8 @@ var Sequelize = require('sequelize');
 
 var options = {
   dialect: 'mariadb',
-  logging: true
+  logging: true,
+  pool: false
 };
 
 if (process.env.JAWSDB_MARIA_URL) {
@@ -44,6 +45,7 @@ var Message = db.define('Message', { // user-facing name: 'byte'
 
 Message.belongsTo(User);
 User.hasMany(Message);
+
 
 // create tables if they don't already exist
 User.sync(
