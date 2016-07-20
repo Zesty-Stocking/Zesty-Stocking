@@ -34,25 +34,16 @@ export default class App extends Component {
     return <Comp route={route} navigator={navigator} />;
   }
 
-  // This is the render from Pranay's component
-  _render() {
+  render() {
     return (
       <Navigator
-        style={ styles.container }
+        style={ [ styles.container, border('yellow') ] }
         initialRoute={ { name: 'signin' } }
         renderScene={ this.renderScene }
         configureScene={ () => {
           return Navigator.SceneConfigs.FloatFromRight;
         } }
       />
-    )
-  }
-
-  render() {
-    return (
-      <View style={ [ styles.container, border('yellow') ] }>
-        <Posts messages={ this.state.messages } />
-      </View>
     );
   }
 }
