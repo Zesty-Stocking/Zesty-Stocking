@@ -25,13 +25,15 @@ class OAuthWebView extends Component {
         			leftButton={leftButtonConfig} />
 				<WebView
 					source={{uri: this.props.route.url}}
-					style={styles.webview} 
+					style={styles.webview}
 					// onLoadEnd={this.handlePageChange.bind(this)}
 					onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
+
 			</View>
-			
+
 		);
 	}
+
 	// handlePageChange() {
 	// 	console.log('loaded new page!');
 	// 	console.dir(this);

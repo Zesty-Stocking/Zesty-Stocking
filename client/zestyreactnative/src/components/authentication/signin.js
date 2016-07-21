@@ -10,6 +10,7 @@ import Button from '../common/button';
 const OAuthURL = 'http://localhost:4568/auth/github';
 // const OAuthURL = 'http://github.com';
 
+
 class Signin extends Component {
 
 	constructor(props) {
