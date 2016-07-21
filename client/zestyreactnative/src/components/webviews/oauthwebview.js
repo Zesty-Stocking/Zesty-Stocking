@@ -5,6 +5,10 @@ import {
   View
 } from 'react-native';
 import NavigationBar from 'react-native-navbar';
+var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
+
+const host = myLocalIp || 'localhost';
+const TOKEN_URL = `http://${host}:4568/account?`
 
 class OAuthWebView extends Component {
   render() {

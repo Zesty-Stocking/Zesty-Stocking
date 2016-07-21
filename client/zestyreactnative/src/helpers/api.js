@@ -1,4 +1,6 @@
-var ipAddress = '10.6.24.5';
+var myLocalIp = require('./scaffolding.js').myLocalIp;
+
+var ipAddress = myLocalIp || 'localhost';
 const baseUrl = `http://${ipAddress}:4568/api`;
 
 module.exports.getMessages = () => {
