@@ -10,7 +10,12 @@ var routes = require('./routes/index');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
 
-var github = require('./config/github.js');
+var github = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
+  ? { 
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID, 
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET 
+  }
+  : require('./config/github.js');
 
 var app = express();
 
