@@ -4,7 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
-import { border } from '../../../helpers/scaffolding';
+import { border } from '../../helpers/scaffolding';
 
 var Message = ({ user, text, likes }) => {
   return (

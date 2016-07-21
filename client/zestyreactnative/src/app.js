@@ -10,7 +10,7 @@ import Signin from './components/authentication/signin';
 import Posts from './components/timeline/posts';
 import OAuthWebView from './components/webviews/oauthwebview';
 
-import { border } from '../helpers/scaffolding';
+import { border } from './helpers/scaffolding';
 
 var ROUTES = {
   // keys with route name, maps to value of actual component to display
