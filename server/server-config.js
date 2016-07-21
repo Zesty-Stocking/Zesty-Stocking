@@ -36,17 +36,32 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+var callbackUrl = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
+  ? 'https://hashitout.herokuapp.com/auth/github/callback'
+  : 'http://localhost:4568/auth/github/callback';
+
 passport.use(new GitHubStrategy({
   clientID: github.GITHUB_CLIENT_ID,
   clientSecret: github.GITHUB_CLIENT_SECRET,
-  // TODO: make dynamic based on enviroment variables
-  callbackURL: 'http://localhost:4568/auth/github/callback'
+  callbackURL: callbackUrl
 },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
+      // TODO: for mobile, instead of returning the user, return the accessToken
+      // so that the mobile client can send the server the accessToken with every
+      // request. ensureAuthenticated would then need to check against that 
+      // accessToken before proceeding to a protected route
+
+      // server should redirect to myapp://dummyurl?accessToken= etc
+      // client needs to check for that url, if match then 
+      // grab the access token, dump the web view, and 
+      // persist the accessToken in state
+      // subsequent requests to server will supply accessToken
+
       // Associate the GitHub profile with a user record in database,
       // and return that user
+
       db.User.find( {where: {username: profile.username}} )
         .then(function(found) {
           if (found) {
@@ -57,7 +72,8 @@ passport.use(new GitHubStrategy({
               username: profile.username,
               name: profile.displayName,
               location: profile._json.location,
-              avatarUrl: profile._json.avatar_url
+              avatarUrl: profile._json.avatar_url,
+              accessToken: accessToken
             }).then(function(user) {
               console.log('new user created:', user);
               return done(null, user);
