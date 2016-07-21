@@ -36,11 +36,12 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+const host = process.env.myLocalIp || 'localhost';
+
 passport.use(new GitHubStrategy({
   clientID: github.GITHUB_CLIENT_ID,
   clientSecret: github.GITHUB_CLIENT_SECRET,
-  // TODO: make dynamic based on enviroment variables
-  callbackURL: 'http://localhost:4568/auth/github/callback'
+  callbackURL: `http://${host}:4568/auth/github/callback`
 },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
