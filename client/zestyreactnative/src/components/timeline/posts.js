@@ -4,7 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
-import Message from '../message/view';
+import MessageList from '../message/list';
 import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
@@ -33,19 +33,9 @@ class Posts extends Component {
 
   listOfMessages() {
     messages = this.state.messages || [];
-
-    var renderedMessage = ({ text, likes }, index) => {
-      return (
-        <Message
-          text={ text }
-          likes={ likes }
-          key={ index }
-          style={ styles.member }
-        />
-      );
-    };
-
-    return messages.map(renderedMessage);
+    return (
+      <MessageList messages={ messages } />
+    );
   }
 
   render() {
