@@ -3,7 +3,6 @@ var Sequelize = require('sequelize');
 
 var options = {
   dialect: 'mariadb',
-  logging: true,
   pool: false
 };
 

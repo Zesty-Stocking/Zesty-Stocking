@@ -36,11 +36,14 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+var callbackUrl = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
+  ? 'https://hashitout.herokuapp.com/auth/github/callback'
+  : 'http://localhost:4568/auth/github/callback';
+
 passport.use(new GitHubStrategy({
   clientID: github.GITHUB_CLIENT_ID,
   clientSecret: github.GITHUB_CLIENT_SECRET,
-  // TODO: make dynamic based on enviroment variables
-  callbackURL: 'http://localhost:4568/auth/github/callback'
+  callbackURL: callbackUrl
 },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
