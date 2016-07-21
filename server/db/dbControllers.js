@@ -13,10 +13,10 @@ module.exports = {
           callback(null, found);
         } else {
           db.User.create({
-            username: profile.username,
-            name: profile.displayName,
-            location: profile._json.location,
-            avatarUrl: profile._json.avatar_url,
+            username: user.username,
+            name: user.displayName,
+            location: user._json.location,
+            avatarUrl: user._json.avatar_url,
             accessToken: user.accessToken
           }).then(function(err, user) {
             if(err);
