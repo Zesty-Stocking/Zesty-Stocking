@@ -31,8 +31,6 @@ class MessageList extends Component {
   componentWillMount() {
     getMessages()
       .then((json) => {
-        console.log('----');
-        console.log(json);
         return this.setState({ dataSource: ds.cloneWithRows(json) })
       })
       .catch((err) => this.setState({ errorMessage: err }) )
