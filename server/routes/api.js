@@ -19,7 +19,7 @@ router.get('/users', function(req, res) {
 
 router.post('/users', function(req, res) {
   var user = req.body;
-  utils.find_or_create_user(user, function(err, user) {
+  utils.findOrCreateUser(user, function(err, user) {
     if(err)
       res.send(err);
     res.json(user);

@@ -20,7 +20,6 @@ var User = db.define('User', {
   name: { type: Sequelize.STRING, defaultValue: null },
   location: { type: Sequelize.STRING, defaultValue: null },
   avatarUrl:  { type: Sequelize.STRING, defaultValue: null },
-  //Maybe have a simple jpeg as the defaultValue for avatarUrl??
   accessToken: Sequelize.STRING
   /*
   followers: ,
