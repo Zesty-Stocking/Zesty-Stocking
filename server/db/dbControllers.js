@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 module.exports = {
 
   find_or_create_user: function(user, callback) {
-    db.User.find( {where: {username: user.username} } )
+    db.User.find( {where: {accessToken: user.accessToken} } )
       .then(function(found) {
         if(found) {
           callback(null, found);
@@ -16,7 +16,8 @@ module.exports = {
             username: user.username,
             name: user.name,
             location: user.location,
-            avatarUrl: user.avatarUrl
+            avatarUrl: user.avatarUrl,
+            accessToken: user.accessToken
           }).then(function(err, user) {
             if(err);
               callback(err, null);
@@ -25,5 +26,5 @@ module.exports = {
         };
       });
   }
-  
+
 };

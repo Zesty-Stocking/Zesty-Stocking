@@ -26,7 +26,6 @@ router.post('/users', function(req, res) {
   });
 });
 
-TODO: ========>
 router.get('/users:UserId', function(req, res) {
   db.User.findById(req.params.user_id, function(err, user) {
     if(err)
