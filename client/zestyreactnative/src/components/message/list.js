@@ -7,18 +7,35 @@ import {
 } from 'react-native';
 import Message from '../message/view';
 import { border } from '../../helpers/scaffolding';
+import { getMessages } from '../../helpers/api';
+
+const ds = new ListView.DataSource({
+  rowHasChanged: (r1, r2) => r1 !== r2
+});
+
+var dummyMessages = [
+  { user: 'Bronson', text: 'Nom nom nom', likes: -1 },
+  { user: 'Fifo', text: 'First in, first out. I mean: Woof!', likes: -1 }
+];
 
 class MessageList extends Component {
   constructor(props) {
     super(props);
 
-    const ds = new ListView.DataSource({
-      rowHasChanged: (r1, r2) => r1 !== r2
-    });
-
     this.state = {
-      dataSource: ds.cloneWithRows(this.props.messages),
+      dataSource: ds.cloneWithRows(dummyMessages),
+      errorMessage: ''
     }
+  }
+
+  componentWillMount() {
+    getMessages()
+      .then((json) => {
+        console.log('----');
+        console.log(json);
+        return this.setState({ dataSource: ds.cloneWithRows(json) })
+      })
+      .catch((err) => this.setState({ errorMessage: err }) )
   }
 
   render() {
