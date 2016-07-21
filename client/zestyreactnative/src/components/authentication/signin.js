@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import Button from '../common/button';
 
@@ -18,10 +19,15 @@ class Signin extends Component {
   }
   render () {
 		return (
-			<View style={styles.container}>
-				<Text style={styles.title}>Zesty Stocking</Text>
-				<Button text={'Sign in with Github'} onPress={this.onPress} />
-			</View>
+      <Image
+        source={require('../../assets/coderain.gif')}
+        style={{flex: 1, width: null, height: null}}
+        resizeMode='cover'>
+  			<View style={styles.container}>
+  				<Text style={styles.title}>Zesty Stocking</Text>
+  				<Button style={styles.button} text={'Sign in with Github'} onPress={this.onPress} />
+  			</View>
+      </Image>
 		);
 	}
 	onPress() {
@@ -35,11 +41,16 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white'
   },
+  button: {
+    backgroundColor: 'white'
+  }
 });
 
 export default Signin;

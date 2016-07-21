@@ -26,21 +26,17 @@ class OAuthWebView extends Component {
 				<WebView
 					source={{uri: this.props.route.url}}
 					style={styles.webview} 
-					// onLoadEnd={this.handlePageChange.bind(this)}
 					onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
 			</View>
 			
 		);
 	}
-	// handlePageChange() {
-	// 	console.log('loaded new page!');
-	// 	console.dir(this);
-	// 	console.log(this.props);
-	// 	//This is where we check whether the url is our payload url
-	// 	//if so, we exit webview and log in the user
-	// }
 	onNavigationStateChange(navState) {
+		//This is where we check whether the url is our payload url
+	 	// if so, we exit webview and log in the user
+	 	console.log('loading new page');
 		console.log(navState);
+
 	}
 	onBackPress() {
 		// alert('go back!');
