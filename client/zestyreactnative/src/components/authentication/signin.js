@@ -13,23 +13,23 @@ const OAuthURL = `http://${host}:4568/auth/github`;
 
 class Signin extends Component {
 
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.onPress = this.onPress.bind(this);
   }
   render () {
-		return (
-			<View style={styles.container}>
-				<Text style={styles.title}>Zesty Stocking</Text>
-				<Button text={'Sign in with Github'} onPress={this.onPress} />
-			</View>
-		);
-	}
-	onPress() {
-		// Log the user in
-		console.log('clicked!');
-		this.props.navigator.push({name: 'oauthwebview', url: OAuthURL});
-	}
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Zesty Stocking</Text>
+        <Button text={'Sign in with Github'} onPress={this.onPress} />
+      </View>
+    );
+  }
+  onPress() {
+    // Log the user in
+    console.log('clicked!');
+    this.props.navigator.push({name: 'oauthwebview', url: OAuthURL});
+  }
 };
 
 var styles = StyleSheet.create({
