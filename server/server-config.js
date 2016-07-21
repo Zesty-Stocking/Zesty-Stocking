@@ -36,9 +36,13 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+// Make things workable for Android development (Android emulators have
+// their own IP addresses): http://stackoverflow.com/a/33978246/2908123
+const host = process.env.myLocalIp || 'localhost';
+
 var callbackUrl = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
   ? 'https://hashitout.herokuapp.com/auth/github/callback'
-  : 'http://localhost:4568/auth/github/callback';
+  : `http://${host}:4568/auth/github/callback`;
 
 passport.use(new GitHubStrategy({
   clientID: github.GITHUB_CLIENT_ID,
