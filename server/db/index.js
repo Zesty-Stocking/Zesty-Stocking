@@ -19,7 +19,8 @@ var User = db.define('User', {
   username: Sequelize.STRING,
   name: Sequelize.STRING,
   location: Sequelize.STRING,
-  avatarUrl: Sequelize.STRING
+  avatarUrl: Sequelize.STRING,
+  accessToken: Sequelize.STRING
   /*
   followers: ,
   following: ,
