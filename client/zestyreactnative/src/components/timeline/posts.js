@@ -5,8 +5,8 @@ import {
   View
 } from 'react-native';
 import Message from '../message/view';
-import { border } from '../../../helpers/scaffolding';
-import { getMessages } from '../../../helpers/api';
+import { border } from '../../helpers/scaffolding';
+import { getMessages } from '../../helpers/api';
 
 var dummyMessages = [
   { user: 'Bronson', text: 'Nom nom nom', likes: -1 },
