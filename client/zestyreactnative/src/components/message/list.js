@@ -37,7 +37,7 @@ class MessageList extends Component {
   }
 
   render() {
-    var renderedMessage = ({ text, likes }, index) => {
+    var renderedMessage = ({ user, text, likes }, index) => {
       return (
         <Message
           text={ text }
@@ -61,8 +61,6 @@ class MessageList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   }
 });
