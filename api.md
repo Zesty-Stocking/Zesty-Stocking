@@ -10,7 +10,7 @@
 
 `GET | POST | PUT`
 
-###URL Params
+###Path Params
 
 Optional:
 `UserId=[interger]`
