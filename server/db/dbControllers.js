@@ -14,13 +14,13 @@ module.exports = {
         if (!query['accessToken']) {
           found.update({ accessToken: user.accessToken })
           .then(function() {
-            callback(null, found);    
+            callback(null, found);
           });
         } else {
-          callback(null, found);  
+          callback(null, found);
         }
       } else {
-        if (query['accessToken']) { 
+        if (query['accessToken']) {
         // we couldn't find any user with that accessToken, so the accessToken is invalid
           callback(null, {});
         } else { // we couldn't find an existing user, so let's create one

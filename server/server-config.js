@@ -11,9 +11,9 @@ var api = require('./routes/api');
 var auth = require('./routes/auth');
 
 var github = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
-  ? { 
-    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID, 
-    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET 
+  ? {
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET
   }
   : require('./config/github.js');
 
@@ -54,8 +54,8 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-      // Associate the GitHub profile with a user record in the database (look 
-      // up by accessToken), and return that user. 
+      // Associate the GitHub profile with a user record in the database (look
+      // up by accessToken), and return that user.
       profile.accessToken = accessToken;
       var query = { username: profile.username };
       utils.findOrCreateUser(profile, query, function(err, user) {
