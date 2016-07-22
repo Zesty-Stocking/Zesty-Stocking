@@ -4,7 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
-import MessageList from '../message/list';
+import MessageList from '../message/messageList';
 import { border } from '../../helpers/scaffolding';
 
 class Posts extends Component {
