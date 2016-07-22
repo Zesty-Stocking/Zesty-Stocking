@@ -10,7 +10,12 @@ var routes = require('./routes/index');
 var api = require('./routes/api');
 var auth = require('./routes/auth');
 
-var github = require('./config/github.js');
+var github = process.env.JAWSDB_MARIA_URL // check if app is running on Heroku (prod)
+  ? { 
+    GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID, 
+    GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET 
+  }
+  : require('./config/github.js');
 
 var app = express();
 
@@ -18,6 +23,7 @@ var app = express();
 // CONFIGURATION ===========================================
 
 var db = require('./db');
+var utils = require('./db/dbControllers');
 
 app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
@@ -48,40 +54,16 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
-
-      // TODO: for mobile, instead of returning the user, return the accessToken
-      // so that the mobile client can send the server the accessToken with every
-      // request. ensureAuthenticated would then need to check against that
-      // accessToken before proceeding to a protected route
-
-      // server should redirect to myapp://dummyurl?accessToken= etc
-      // client needs to check for that url, if match then
-      // grab the access token, dump the web view, and
-      // persist the accessToken in state
-      // subsequent requests to server will supply accessToken
-
-      // Associate the GitHub profile with a user record in database,
-      // and return that user
-
-      db.User.find( {where: {username: profile.username}} )
-        .then(function(found) {
-          if (found) {
-            console.log('existing user was found:', found);
-            return done(null, found);
-          } else {
-            db.User.create({
-              username: profile.username,
-              name: profile.displayName,
-              location: profile._json.location,
-              avatarUrl: profile._json.avatar_url,
-              accessToken: accessToken
-            }).then(function(user) {
-              console.log('new user created:', user);
-              return done(null, user);
-            });
-          }
+      // Associate the GitHub profile with a user record in the database (look 
+      // up by accessToken), and return that user. 
+      profile.accessToken = accessToken;
+      var query = { username: profile.username };
+      utils.findOrCreateUser(profile, query, function(err, user) {
+        if (err) {
+          console.error(err);
         }
-      );
+        return done(null, user);
+      });
     });
   }
 ));
