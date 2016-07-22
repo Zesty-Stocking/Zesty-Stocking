@@ -21,8 +21,8 @@ var Message = ({ User, text, likes }) => {
 
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
-    <View style={ [ styles.container ] }>
-      <View style={ styles.user }>
+    <View style={ [ styles.container, border('black') ] }>
+      <View style={ [ styles.user, border('blue') ] }>
         <Image
           source={ {uri: avatarUrl} }
           style={{width: 40, height: 40}}
@@ -31,10 +31,10 @@ var Message = ({ User, text, likes }) => {
         <Text>{ name }</Text>
         <Text>{ location }</Text>
       </View>
-      <View style={ [ styles.text ] } >
+      <View style={ [ styles.text, border('green') ] } >
         <Text>{ text }</Text>
       </View>
-      <View style={ styles.likes } >
+      <View style={ [ styles.likes, border('purple') ] } >
         <Text style={ styles.likes }>
           { likes }
         </Text>
