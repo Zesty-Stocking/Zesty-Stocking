@@ -23,13 +23,13 @@ None
 **Code:** `200` 
 Content: 
 ```javascript
-            { 
-            username: "John_Doe11",
-            name: "John Doe",
-            location: "Berkeley, CA",
-            avatarUrl: "_____",
-            accessToken: *****
-          }
+ { 
+ username: "John_Doe11",
+ name: "John Doe",
+ location: "Berkeley, CA",
+ avatarUrl: "_____",
+ accessToken: *****
+ }
 ```
 
 **Error Response:**
