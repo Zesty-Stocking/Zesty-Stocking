@@ -22,8 +22,6 @@ class MessageComposer extends Component {
     this.state = {
       text: ''
     };
-
-    this.displayText = this.displayText.bind(this);
   }
 
   render() {

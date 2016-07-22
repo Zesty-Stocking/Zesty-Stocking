@@ -26,6 +26,8 @@ class MessageList extends Component {
       dataSource: ds.cloneWithRows(dummyMessages),
       errorMessage: ''
     }
+
+    this.renderMessage = this.renderMessage.bind(this);
   }
 
   componentWillMount() {
@@ -36,22 +38,23 @@ class MessageList extends Component {
       .catch((err) => this.setState({ errorMessage: err }) )
   }
 
-  render() {
-    var renderedMessage = ({ user, text, likes }, index) => {
-      return (
-        <Message
-          text={ text }
-          likes={ likes }
-          key={ index }
-        />
-      );
-    };
+  renderMessage({ user, text, likes }, index) {
+    return (
+      <Message
+        user={ user }
+        text={ text }
+        likes={ likes }
+        key={ index }
+      />
+    );
+  }
 
+  render() {
     return (
       <View style={ [ styles.container, border('blue') ] }>
         <ListView
           dataSource={ this.state.dataSource }
-          renderRow={ renderedMessage }
+          renderRow={ this.renderMessage }
         />
       </View>
     );
