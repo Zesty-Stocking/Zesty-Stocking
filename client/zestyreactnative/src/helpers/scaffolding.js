@@ -3,7 +3,7 @@
 module.exports.border = color => {
   return {
     borderColor: color,
-    borderWidth: 4
+    borderWidth: 2
   }
 };
 
