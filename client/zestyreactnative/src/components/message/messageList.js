@@ -38,10 +38,13 @@ class MessageList extends Component {
       .catch((err) => this.setState({ errorMessage: err }) )
   }
 
-  renderMessage({ user, text, likes }, index) {
+  renderMessage({ User, text, likes }, index) {
+    console.log('---- inside of MessageList#renderMessage');
+    console.log(User);
+
     return (
       <Message
-        user={ user }
+        User={ User }
         text={ text }
         likes={ likes }
         key={ index }
@@ -51,7 +54,7 @@ class MessageList extends Component {
 
   render() {
     return (
-      <View style={ [ styles.container, border('blue') ] }>
+      <View style={ [ styles.container ] }>
         <ListView
           dataSource={ this.state.dataSource }
           renderRow={ this.renderMessage }
