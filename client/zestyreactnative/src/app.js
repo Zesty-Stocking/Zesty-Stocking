@@ -9,6 +9,7 @@ import {
 import Signin from './components/authentication/signin';
 import Posts from './components/timeline/posts';
 import OAuthWebView from './components/webviews/oauthwebview';
+import MessageComposer from './components/message/messageComposer.js';
 
 import { border } from './helpers/scaffolding';
 
@@ -16,7 +17,8 @@ var ROUTES = {
   // keys with route name, maps to value of actual component to display
   signin: Signin,
   posts: Posts,
-  oauthwebview: OAuthWebView
+  oauthwebview: OAuthWebView,
+  messageComposer: MessageComposer
 }
 
 class App extends Component {
