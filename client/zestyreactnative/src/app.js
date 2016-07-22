@@ -10,12 +10,7 @@ import Signin from './components/authentication/signin';
 import Posts from './components/timeline/posts';
 import OAuthWebView from './components/webviews/oauthwebview';
 
-import { border } from '../helpers/scaffolding';
-
-var dummyMessages = [
-  { user: 'Bronson', text: 'Nom nom nom', likes: 1 },
-  { user: 'Fifo', text: 'First in, first out. I mean: Woof!', likes: 1 }
-];
+import { border } from './helpers/scaffolding';
 
 var ROUTES = {
   // keys with route name, maps to value of actual component to display
@@ -27,10 +22,6 @@ var ROUTES = {
 class App extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      messages: dummyMessages
-    };
   }
 
   renderScene(route, navigator) {
