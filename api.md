@@ -32,9 +32,9 @@ Content:
           }
 ```
 
-Error Response:
+`Error Response:
 Code: 401 UNAUTHORIZED 
-Content: { error : "Error" }
+Content: { error : "Error" }`
 
 Sample Call:
 ```javascript
