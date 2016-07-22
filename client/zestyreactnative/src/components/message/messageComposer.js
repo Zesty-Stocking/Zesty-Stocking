@@ -5,6 +5,7 @@ import {
   TextInput,
   View
 } from 'react-native';
+import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
 
@@ -22,6 +23,23 @@ class MessageComposer extends Component {
     this.state = {
       text: ''
     };
+
+    this.onPressSend = this.onPressSend.bind(this);
+  }
+
+  onPressSend() {
+    var text = this.state.text;
+
+    console.log('---- inside of messageComposer');
+    console.log(text)
+
+    postMessage(text)
+      .then(function(message) {
+        this.props.navigator.pop();
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
   }
 
   render() {
@@ -35,6 +53,11 @@ class MessageComposer extends Component {
         <Text style={{padding: 10, fontSize: 42}}>
           { this.state.text }
         </Text>
+
+        <Button
+          text={ 'Send' }
+          onPress={ this.onPressSend }
+        />
       </View>
     );
   }
