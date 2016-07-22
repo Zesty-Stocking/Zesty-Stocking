@@ -32,8 +32,8 @@ Content:
           }
 ```
 
-`Error Response:
-Code: 401 UNAUTHORIZED 
+**Error Response:**
+`Code: 401 UNAUTHORIZED 
 Content: { error : "Error" }`
 
 Sample Call:
