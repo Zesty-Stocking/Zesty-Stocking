@@ -7,12 +7,21 @@ import {
 } from 'react-native';
 import { border } from '../../helpers/scaffolding';
 
-var Message = ({ user, text, likes }) => {
-  var { username, name, location, avatarUrl } = user;
+var Message = ({ User, text, likes }) => {
+  console.log('--- inside of Message');
+  console.log(User);
+  if (User) {
+    var { username, name, location, avatarUrl } = User;
+  } else {
+    var username = 'default username';
+    var name = 'default name';
+    var location = 'default location';
+    var avatarUrl = 'default avatarUrl';
+  }
 
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
-    <View style={ [ styles.container, border('purple') ] }>
+    <View style={ [ styles.container ] }>
       <View style={ styles.user }>
         <Image
           source={ {uri: avatarUrl} }
@@ -22,10 +31,10 @@ var Message = ({ user, text, likes }) => {
         <Text>{ name }</Text>
         <Text>{ location }</Text>
       </View>
-      <View style={ [ styles.text, border('red') ] } >
+      <View style={ [ styles.text ] } >
         <Text>{ text }</Text>
       </View>
-      <View style={ border('orange') } >
+      <View style={ styles.likes } >
         <Text style={ styles.likes }>
           { likes }
         </Text>
@@ -44,19 +53,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   user: {
-    textAlign: 'center',
-    color: '#333333',
+      // color: '#333333',
     marginBottom: 5,
   },
   text: {
-    fontSize: 20,
-    textAlign: 'left',
+      // fontSize: 20,
     marginLeft: 12,
-    fontSize: 16,
   },
   likes: {
     // textAlign: 'center',
-    color: '#333333',
+      // color: '#333333',
     marginBottom: 5,
   },
   photo: {
