@@ -39,9 +39,6 @@ class MessageList extends Component {
   }
 
   renderMessage({ User, text, likes }, index) {
-    console.log('---- inside of MessageList#renderMessage');
-    console.log(User);
-
     return (
       <Message
         User={ User }

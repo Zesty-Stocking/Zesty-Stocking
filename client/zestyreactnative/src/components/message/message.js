@@ -8,8 +8,6 @@ import {
 import { border } from '../../helpers/scaffolding';
 
 var Message = ({ User, text, likes }) => {
-  console.log('--- inside of Message');
-  console.log(User);
   if (User) {
     var { username, name, location, avatarUrl } = User;
   } else {
@@ -24,8 +22,8 @@ var Message = ({ User, text, likes }) => {
     <View style={ [ styles.container, border('black') ] }>
       <View style={ [ styles.user, border('blue') ] }>
         <Image
-          source={ {uri: avatarUrl} }
-          style={{width: 40, height: 40}}
+          source={ { uri: avatarUrl } }
+          style={ { width: 60, height: 60 } }
         />
         <Text>{ username }</Text>
         <Text>{ name }</Text>
@@ -36,7 +34,7 @@ var Message = ({ User, text, likes }) => {
       </View>
       <View style={ [ styles.likes, border('purple') ] } >
         <Text style={ styles.likes }>
-          { likes }
+          Likes: { likes }
         </Text>
       </View>
     </View>
