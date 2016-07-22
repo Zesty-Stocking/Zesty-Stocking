@@ -39,7 +39,7 @@ router.get('/users/:UserId', function(req, res) {
 });
 
 router.get('/messages', function(req, res) {
-  db.Message.findAll().then(function(messages) {
+  db.Message.findAll({ include: [ db.User ] }).then(function(messages) {
     res.status(200).json(messages);
   });
 });
