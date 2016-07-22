@@ -1,40 +1,43 @@
-Zesty Stocking REST api 
+#Zesty Stocking REST api 
 
-Returns and posts json data about users and messages. 
+**Returns and posts json data about users and messages.** 
 
-URL
+###URL
 /api/users
 /api/messages
 
-Methods:
+##Methods:
 
-GET | POST | PUT
+`GET | POST | PUT`
 
-URL Params
+###URL Params
 
 Optional:
-UserId=[interger]
+`UserId=[interger]`
 
-Data Params
+##Data Params
 None
 
-Success Response:
+##Success Response:
 
 Code: 200 
-Content: { 
+Content: 
+```javascript
+            { 
             username: "John_Doe11",
             name: "John Doe",
             location: "Berkeley, CA",
             avatarUrl: "_____",
             accessToken: *****
           }
+```
 
 Error Response:
 Code: 401 UNAUTHORIZED 
 Content: { error : "Error" }
 
 Sample Call:
-
+```javascript
  $.ajax({
     url: "/api/messages",
     dataType: "json",
@@ -43,6 +46,6 @@ Sample Call:
       console.log(r);
     }
   });
-
-Notes:
-Express Node server. MariaDB Database. Sequalize ORM. 
+```
+##Notes:
+**Express Node server. MariaDB Database. Sequalize ORM.** 
