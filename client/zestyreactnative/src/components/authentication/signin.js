@@ -11,6 +11,7 @@ const host = process.env.myLocalIp || 'localhost';
 const OAuthURL = `http://${host}:4568/auth/github`;
 // const OAuthURL = 'http://github.com';
 
+
 class Signin extends Component {
 
 	constructor(props) {

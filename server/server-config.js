@@ -52,14 +52,15 @@ passport.use(new GitHubStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
+
       // TODO: for mobile, instead of returning the user, return the accessToken
       // so that the mobile client can send the server the accessToken with every
-      // request. ensureAuthenticated would then need to check against that 
+      // request. ensureAuthenticated would then need to check against that
       // accessToken before proceeding to a protected route
 
       // server should redirect to myapp://dummyurl?accessToken= etc
-      // client needs to check for that url, if match then 
-      // grab the access token, dump the web view, and 
+      // client needs to check for that url, if match then
+      // grab the access token, dump the web view, and
       // persist the accessToken in state
       // subsequent requests to server will supply accessToken
 
