@@ -19,9 +19,11 @@ module.exports = {
             avatarUrl: user._json.avatar_url,
             accessToken: user.accessToken
           }).then(function(err, user) {
-            if(err);
-              callback(err, null);
-            callback(null, user);
+            if (err) {
+              callback(err);
+            } else {
+              callback(null, user);
+            }
           });
         };
       });

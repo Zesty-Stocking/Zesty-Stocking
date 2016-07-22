@@ -20,23 +20,27 @@ router.get('/users', function(req, res) {
 router.post('/users', function(req, res) {
   var user = req.body;
   utils.findOrCreateUser(user, function(err, user) {
-    if(err)
-      res.send(err);
-    res.json(user);
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).json(user);
+    }
   });
 });
 
-router.get('/users:UserId', function(req, res) {
-  db.User.findById(req.params.user_id, function(err, user) {
-    if(err)
-      res.send(err);
-    res.json(user);
+router.get('/users/:UserId', function(req, res) {
+  db.User.findById(req.params.UserId, function(err, user) {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).json(user);
+    }
   })
 });
 
 router.get('/messages', function(req, res) {
   db.Message.findAll().then(function(messages) {
-    res.json(messages);
+    res.status(200).json(messages);
   });
 });
 
@@ -46,7 +50,7 @@ router.post('/messages', function(req, res) {
     UserId: req.body.UserId,
     text: req.body.text
   }).then(function(message) {
-    res.json(message)
+    res.status(201).json(message)
   });
 });
 
