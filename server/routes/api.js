@@ -32,7 +32,7 @@ router.post('/users', function(req, res) {
 router.get('/users/:UserId', function(req, res) {
   db.User.findById(req.params.UserId, function(err, user) {
     if (err) {
-      res.staus(500).send(err);
+      res.status(500).send(err);
     }
     res.status(200).json(user);
   });
