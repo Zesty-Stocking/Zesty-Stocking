@@ -21,6 +21,10 @@ router.get('/github',
 router.get('/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
+    // server redirects to url with accessToken in the url
+    // mobile client will grab the accessToken from the url and
+    // persist it in state locally. subsequent requests to server will
+    // supply that accessToken for user lookup
     res.redirect('/account?accessToken=' + req.user.accessToken);
   });
 

@@ -19,19 +19,22 @@ router.get('/users', function(req, res) {
 
 router.post('/users', function(req, res) {
   var user = req.body;
-  utils.findOrCreateUser(user, function(err, user) {
-    if(err)
+  var query = { accessToken: user.accessToken };
+  utils.findOrCreateUser(user, query, function(err, user) {
+    if (err) {
       res.send(err);
+    }
     res.json(user);
   });
 });
 
 router.get('/users:UserId', function(req, res) {
   db.User.findById(req.params.user_id, function(err, user) {
-    if(err)
+    if (err) {
       res.send(err);
+    }
     res.json(user);
-  })
+  });
 });
 
 router.get('/messages', function(req, res) {
@@ -41,12 +44,11 @@ router.get('/messages', function(req, res) {
 });
 
 router.post('/messages', function(req, res) {
-  console.log('inside of message post api');
   db.Message.create({
     UserId: req.body.UserId,
     text: req.body.text
   }).then(function(message) {
-    res.json(message)
+    res.json(message);
   });
 });
 
