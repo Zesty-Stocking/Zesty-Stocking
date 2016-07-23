@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   StyleSheet,
   Text,
   TextInput,
@@ -28,17 +29,15 @@ class MessageComposer extends Component {
   }
 
   onPressSend() {
-    var text = this.state.text;
+    // attempt to retreive access token from device storage
+    AsyncStorage.getItem('accessToken')
+      .then(accessToken => {
+        // then send along that token with the text of the message
+        var text = this.state.text;
 
-    console.log('---- inside of messageComposer');
-    console.log(text)
-
-    postMessage(text)
-      .then(function(message) {
-        this.props.navigator.pop();
-      })
-      .catch(function(err) {
-        console.log(err);
+        postMessage(text, accessToken)
+          .then(message => this.props.navigator.pop())
+          .catch(err => console.log(err));
       })
   }
 
