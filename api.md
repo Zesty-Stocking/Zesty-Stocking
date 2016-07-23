@@ -21,9 +21,9 @@ None
 
 ##Success Response:
 
-**Code:** `200` 
-Content: 
-Users
+**Code:** `200`   
+###Content: 
+###Users
 ```javascript
 { 
  "username": "John_Doe11",
@@ -35,7 +35,7 @@ Users
  "updatedAt": "2016-07-21T20:30:17.00Z"
 }
 ```
-Messages
+###Messages
 ```javascript
 [
  {
