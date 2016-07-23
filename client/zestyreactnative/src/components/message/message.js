@@ -20,22 +20,24 @@ var Message = ({ User, text, likes }) => {
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
     <View style={ [ styles.container, border('black') ] }>
-      <View style={ [ styles.user, border('blue') ] }>
+      <View style={ styles.left }>
         <Image
           source={ { uri: avatarUrl } }
-          style={ { width: 60, height: 60 } }
+          style={ styles.photo }
         />
-        <Text>{ username }</Text>
-        <Text>{ name }</Text>
-        <Text>{ location }</Text>
       </View>
-      <View style={ [ styles.text, border('green') ] } >
-        <Text>{ text }</Text>
-      </View>
-      <View style={ [ styles.likes, border('purple') ] } >
-        <Text style={ styles.likes }>
-          Likes: { likes }
-        </Text>
+      <View style={ styles.right }>
+        <View style={ [ styles.rightTop ] }>
+          <Text>{ `@${username}` } | { location }</Text>
+        </View>
+        <View style={ [ styles.rightMiddle ] } >
+          <Text>{ text }</Text>
+        </View>
+        <View style={ [ styles.rightBottom ] } >
+          <Text>
+            Likes: { likes }
+          </Text>
+        </View>
       </View>
     </View>
   );
@@ -44,29 +46,37 @@ var Message = ({ User, text, likes }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
+    padding: 5,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
+    marginBottom: 5
   },
-  user: {
-      // color: '#333333',
-    marginBottom: 5,
+  left: {
+    padding: 5,
+    alignItems: 'center',
+    flex: 1
   },
-  text: {
-      // fontSize: 20,
-    marginLeft: 12,
-  },
-  likes: {
-    // textAlign: 'center',
-      // color: '#333333',
-    marginBottom: 5,
+  right: {
+    padding: 5,
+    flex: 5
   },
   photo: {
-    height: 40,
-    width: 40,
-    borderRadius: 20,
+    height: 55,
+    width: 55,
+    borderRadius: 30,
+  },
+  rightTop: {
+    borderBottomWidth: 1,
+    paddingBottom: 5,
+
+  },
+  rightMiddle: {
+
+  },
+  rightBottom: {
+    alignItems: 'flex-end',
   },
 });
 
