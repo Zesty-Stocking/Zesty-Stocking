@@ -22,13 +22,15 @@ class Posts extends Component {
   render() {
     return (
       <View style={ [ styles.container, border('red') ] }>
-        <Text>Messages</Text>
+        <Text style={ styles.header}>Posts</Text>
 
-        <Button
-          style={ styles.button }
-          text={ 'Write Message!' }
-          onPress={ this.onPressCompose }
-        />
+        <View style={ styles.buttonContainer } >
+          <Button
+            style={ [ styles.button, border('olive') ] }
+            text={ 'Compose' }
+            onPress={ this.onPressCompose }
+          />
+        </View>
 
         <View>
           <MessageList />
@@ -43,12 +45,17 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
+  header: {
+    fontSize: 32,
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   button: {
-    backgroundColor: 'black',
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: 'white',
-    textAlign: 'right'
+    width: 150,
+    marginBottom: 10
   }
 });
 
