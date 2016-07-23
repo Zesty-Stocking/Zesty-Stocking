@@ -3,7 +3,7 @@
 **Returns and posts json data about users and messages.** 
 
 ###URL
-`/api/users` \n
+`/api/users`,
 `/api/messages`
 
 ##Methods:
