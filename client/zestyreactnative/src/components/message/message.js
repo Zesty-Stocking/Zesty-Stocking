@@ -20,20 +20,20 @@ var Message = ({ User, text, likes }) => {
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
     <View style={ [ styles.container, border('black') ] }>
-      <View style={ [ styles.left, border('blue') ] }>
+      <View style={ styles.left }>
         <Image
           source={ { uri: avatarUrl } }
           style={ styles.photo }
         />
       </View>
-      <View style={ [ styles.right, border('red') ] }>
-        <View style={ [ styles.user, border('orange') ] }>
-          <Text>@{ username } | { location }</Text>
+      <View style={ styles.right }>
+        <View style={ [ styles.rightTop ] }>
+          <Text>{ `@${username}` } | { location }</Text>
         </View>
-        <View style={ [ styles.text, border('green') ] } >
+        <View style={ [ styles.rightMiddle ] } >
           <Text>{ text }</Text>
         </View>
-        <View style={ [ styles.likes, border('purple') ] } >
+        <View style={ [ styles.rightBottom ] } >
           <Text>
             Likes: { likes }
           </Text>
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: '#F5FCFF',
+    marginBottom: 5
   },
   left: {
     padding: 5,
@@ -66,14 +67,16 @@ const styles = StyleSheet.create({
     width: 55,
     borderRadius: 30,
   },
-  user: {
+  rightTop: {
+    borderBottomWidth: 1,
+    paddingBottom: 5,
 
   },
-  text: {
+  rightMiddle: {
 
   },
-  likes: {
-    alignItems: 'flex-end'
+  rightBottom: {
+    alignItems: 'flex-end',
   },
 });
 
