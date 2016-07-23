@@ -23,7 +23,7 @@ None
 
 **Code:** `200`   
 ###Content: 
-###Users
+####Users
 ```javascript
 { 
  "username": "John_Doe11",
@@ -35,7 +35,7 @@ None
  "updatedAt": "2016-07-21T20:30:17.00Z"
 }
 ```
-###Messages
+####Messages
 ```javascript
 [
  {
