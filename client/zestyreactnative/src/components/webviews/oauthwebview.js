@@ -6,7 +6,7 @@ import {
   AsyncStorage
 } from 'react-native';
 import NavigationBar from 'react-native-navbar';
-var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
+var myLocalIp = require('../../helpers/scaffolding').myLocalIp;
 
 const host = myLocalIp || 'localhost';
 const TOKEN_URL = `http://${host}:4568/account?`
@@ -33,7 +33,6 @@ class OAuthWebView extends Component {
           style={styles.webview}
           onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
       </View>
-
     );
   }
   onNavigationStateChange(navState) {

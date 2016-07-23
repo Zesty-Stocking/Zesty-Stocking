@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {
+  AsyncStorage,
   StyleSheet,
   Text,
   TextInput,
   View
 } from 'react-native';
+import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
 
@@ -22,6 +24,21 @@ class MessageComposer extends Component {
     this.state = {
       text: ''
     };
+
+    this.onPressSend = this.onPressSend.bind(this);
+  }
+
+  onPressSend() {
+    // attempt to retreive access token from device storage
+    AsyncStorage.getItem('accessToken')
+      .then(accessToken => {
+        // then send along that token with the text of the message
+        var text = this.state.text;
+
+        postMessage(text, accessToken)
+          .then(message => this.props.navigator.pop())
+          .catch(err => console.log(err));
+      })
   }
 
   render() {
@@ -35,6 +52,11 @@ class MessageComposer extends Component {
         <Text style={{padding: 10, fontSize: 42}}>
           { this.state.text }
         </Text>
+
+        <Button
+          text={ 'Send' }
+          onPress={ this.onPressSend }
+        />
       </View>
     );
   }

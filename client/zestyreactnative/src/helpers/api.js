@@ -12,9 +12,14 @@ module.exports.getMessages = () => {
     .catch((err) =>  err );
 };
 
-module.exports.postMessage = (text) => {
+module.exports.postMessage = (text, accessToken) => {
   var url = `${baseUrl}/messages`;
-  var jsonText = JSON.stringify({ text: text });
+  var message = {
+    text: text,
+    accessToken: accessToken
+  };
+
+  var jsonText = JSON.stringify(message);
   var fetchOpts = {
     method: 'POST',
     headers: {
