@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     return (
       <Navigator
-        style={ [ styles.container, border('yellow') ] }
+        style={ styles.container }
         initialRoute={ { name: 'signin' } }
         renderScene={ this.renderScene }
         configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } } />
@@ -44,7 +44,8 @@ class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#333'
   }
 });
 

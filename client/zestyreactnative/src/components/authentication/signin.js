@@ -6,6 +6,7 @@ import {
   Image
 } from 'react-native';
 import Button from '../common/button';
+import { border } from '../../helpers/scaffolding';
 var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
 
 //This is where we put our backend oauth endpoint url
@@ -22,15 +23,22 @@ class Signin extends Component {
   }
   render () {
     return (
-      <Image
-        source={require('../../assets/coderain.gif')}
-        style={{flex: 1, width: null, height: null}}
-        resizeMode='cover'>
-        <View style={styles.container}>
-          <Text style={styles.title}>Zesty Stocking</Text>
-          <Button style={styles.button} text={'Sign in with Github'} onPress={this.onPress} />
+      <View style={ styles.container } >
+        <View style={ [ styles.top, border('blue') ] } >
+          <Image
+            source={ require('../../assets/hashtag.png') }
+            style={ styles.image }
+            resizeMode='contain' />
         </View>
-      </Image>
+        <View style={ [ styles.bottom, border('orange') ] } >
+          <Text style={styles.title}>by Zesty Stocking</Text>
+          <Button
+            style={styles.button}
+            text={'Sign in with Github'}
+            onPress={this.onPress}
+          />
+        </View>
+      </View>
     );
   }
   onPress() {
@@ -43,12 +51,26 @@ class Signin extends Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  top: {
+    flex: 5,
+  },
+  bottom: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    flex: 1,
+    width: 400,
+    height: 400
+  },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: '200',
     color: 'white'
   },
   button: {
