@@ -39,9 +39,12 @@ router.get('/users/:UserId', function(req, res) {
 });
 
 router.get('/messages', function(req, res) {
-  db.Message.findAll({ include: [ db.User ] }).then(function(messages) {
-    res.status(200).json(messages);
-  });
+  var order = req.query.order === 'asc' ? 'createdAt ASC' : 'createdAt DESC';
+
+  db.Message.findAll({ include: [ db.User ], order: order })
+    .then(function(messages) {
+      res.status(200).json(messages);
+    });
 });
 
 router.post('/messages', function(req, res) {
@@ -51,7 +54,7 @@ router.post('/messages', function(req, res) {
     if (err || !message.text) {
       res.status(401).send(err);
     } else {
-      res.status(200).json(message);  
+      res.status(200).json(message);
     }
   });
 });
