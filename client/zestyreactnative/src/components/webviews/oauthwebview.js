@@ -31,7 +31,7 @@ class OAuthWebView extends Component {
 					style={styles.webview} 
 					onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
 			</View>
-			
+
 		);
 	}
 	onNavigationStateChange(navState) {

@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 var db = require('../db');
 var Sequelize = require('sequelize');
+var utils = require('../db/dbControllers');
 
 
 
@@ -11,54 +12,49 @@ var Sequelize = require('sequelize');
 
 
 router.get('/users', function(req, res) {
-  console.log('inside API route')
   db.User.findAll().then(function(users) {
     res.json(users);
   });
 });
 
 router.post('/users', function(req, res) {
-  console.log('inside post for users api')
-  db.User.find( {where: {username: req.body.username}} )
-    .then(function(found) {
-    if(found) {
-      res.send(found);
-    } else {
-      console.log(req.body);
-      var user = db.User.create({
-        username: req.body.username,
-        name: req.body.name,
-        location: req.body.location,
-        avatarUrl: req.body.avatarUrl
-      }).then(function() {
-        res.json(user);
-      })
+  var user = req.body;
+  var query = { accessToken: user.accessToken };
+
+  utils.findOrCreateUser(user, query, function(err, user) {
+    if (err) {
+      res.status(500).send(err);
     }
-  })
+    res.status(200).json(user);
+  });
 });
 
-router.get('/users:user_id', function(req, res) {
-  db.User.findById(req.params.user_id, function(err, user) {
-    if(err)
-      res.send(err);
-    res.json(user);
-  })
+router.get('/users/:UserId', function(req, res) {
+  db.User.findById(req.params.UserId, function(err, user) {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.status(200).json(user);
+  });
 });
 
 router.get('/messages', function(req, res) {
-  db.Message.findAll().then(function(messages) {
-    res.json(messages);
+  db.Message.findAll({ include: [ db.User ] }).then(function(messages) {
+    res.status(200).json(messages);
   });
 });
 
 router.post('/messages', function(req, res) {
-  console.log('inside of message post api');
-  var message = db.Message.create({
-    text: req.body.text,
-    likes: 0
-  }).then(function() {
-    res.json(message)
+  var accessToken = req.body.accessToken;
+  var text = req.body.text;
+  utils.createMessage(accessToken, text, function(err, message) {
+    if (err || !message.text) {
+      res.status(401).send(err);
+    } else {
+      res.status(200).json(message);  
+    }
   });
 });
+
 
 module.exports = router;
