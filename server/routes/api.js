@@ -45,12 +45,16 @@ router.get('/messages', function(req, res) {
 });
 
 router.post('/messages', function(req, res) {
-  db.Message.create({
-    UserId: req.body.UserId,
-    text: req.body.text
-  }).then(function(message) {
-    res.status(201).json(message)
+  var accessToken = req.body.accessToken;
+  var text = req.body.text;
+  utils.createMessage(accessToken, text, function(err, message) {
+    if (err || !message.text) {
+      res.status(401).send(err);
+    } else {
+      res.status(200).json(message);  
+    }
   });
 });
+
 
 module.exports = router;

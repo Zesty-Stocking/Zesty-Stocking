@@ -1,6 +1,7 @@
 // MODULES =================================================
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var Sequelize = require('sequelize');
 var session = require('express-session');
 var passport = require('passport');
@@ -25,6 +26,7 @@ var app = express();
 var db = require('./db');
 var utils = require('./db/dbControllers');
 
+app.use(morgan('dev')); // TODO: only run in development environment
 app.use(bodyParser.json());
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
