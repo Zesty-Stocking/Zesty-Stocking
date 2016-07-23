@@ -13,6 +13,10 @@ const TOKEN_URL = `http://${host}:4568/account?`
 
 // const TOKEN_URL = 'http://localhost:4568/account?'
 
+var myLocalIp = require('../../helpers/scaffolding').myLocalIp;
+const host = myLocalIp || 'localhost';
+const TOKEN_URL = `http://${host}:4568/account?`;
+
 class OAuthWebView extends Component {
   render() {
 
@@ -32,10 +36,9 @@ class OAuthWebView extends Component {
               leftButton={leftButtonConfig} />
         <WebView
           source={{uri: this.props.route.url}}
-          style={styles.webview} 
+          style={styles.webview}
           onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
       </View>
-      
     );
   }
   onNavigationStateChange(navState) {
@@ -71,7 +74,7 @@ class OAuthWebView extends Component {
 
 const styles = StyleSheet.create({
   webview: {
-    // marginTop: 20
+
   },
 });
 
