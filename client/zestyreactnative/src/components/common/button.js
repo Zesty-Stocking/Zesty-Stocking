@@ -25,9 +25,10 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderRadius: 5,
-    padding: 5,
-    borderColor: 'black',
-    marginTop: 10
+    padding: 10,
+    borderColor: 'white',
+    marginTop: 10,
+    backgroundColor: 'white'
   },
   buttonText: {
     flex: 1,
