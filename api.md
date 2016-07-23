@@ -13,8 +13,7 @@
 ###Path Params
 
 **Optional:**  
-`UserId=[interger]`  
-`/api/users/1`
+`UserId=[interger]` i.e. `/api/users/1`
 
 
 ##Data Params
