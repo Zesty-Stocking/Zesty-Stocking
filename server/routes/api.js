@@ -48,10 +48,11 @@ router.post('/messages', function(req, res) {
   var accessToken = req.body.accessToken;
   var text = req.body.text;
   utils.createMessage(accessToken, text, function(err, message) {
-    if (err || !message) {
+    if (err || !message.text) {
       res.status(401).send(err);
+    } else {
+      res.status(200).json(message);  
     }
-    res.status(200).json(message);
   });
 });
 

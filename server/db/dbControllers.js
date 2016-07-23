@@ -45,16 +45,16 @@ module.exports = {
     // if user is found, create message in db using that UserId
     module.exports.findOrCreateUser({}, { accessToken: accessToken }, function(err, user) {
       if (err) {
-        return callback(err);
+        return callback(err, {});
       }
       if (!user.id) {
-        return callback({});
+        return callback(null, {});
       }
       return db.Message.create({
         UserId: user.id,
         text: text
       }).then(function(message) {
-        callback(message);
+        callback(null, message);
       }).catch(function(error) {
         console.error(error);
       });
