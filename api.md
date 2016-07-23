@@ -12,7 +12,7 @@
 
 ###Path Params
 
-**Optional:**
+**Optional:**  
 `UserId=[interger]`  
 `/api/users/1`
 
