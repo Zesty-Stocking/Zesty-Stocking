@@ -38,5 +38,26 @@ module.exports = {
         }
       }
     });
+  },
+
+  createMessage: function(accessToken, text, callback) {
+    // look up the user by accessToken to get his UserId
+    // if user is found, create message in db using that UserId
+    module.exports.findOrCreateUser({}, { accessToken: accessToken }, function(err, user) {
+      if (err) {
+        return callback(err, {});
+      }
+      if (!user.id) {
+        return callback(null, {});
+      }
+      return db.Message.create({
+        UserId: user.id,
+        text: text
+      }).then(function(message) {
+        callback(null, message);
+      }).catch(function(error) {
+        console.error(error);
+      });
+    });
   }
 };
