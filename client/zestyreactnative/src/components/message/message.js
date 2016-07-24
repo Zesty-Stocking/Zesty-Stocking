@@ -10,13 +10,7 @@ import { border } from '../../helpers/scaffolding';
 var Message = ({ User, text, likes }) => {
   if (User) {
     var { username, name, location, avatarUrl } = User;
-  } else {
-    var username = 'default username';
-    var name = 'default name';
-    var location = 'default location';
-    var avatarUrl = 'default avatarUrl';
-  }
-
+  } 
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
     <View style={ [ styles.container, border('black') ] }>

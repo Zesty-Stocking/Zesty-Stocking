@@ -9,18 +9,13 @@ import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
-var dummyMessages = [
-  { user: 'Bronson', text: 'Nom nom nom', likes: -1 },
-  { user: 'Fifo', text: 'First in, first out. I mean: Woof!', likes: -1 }
-];
-
 class Posts extends Component {
   constructor(props) {
     super(props);
     this.onPressCompose = this.onPressCompose.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
     this.state = {
-      data: dummyMessages,
+      data: [],
       error: ''
     }
   }
