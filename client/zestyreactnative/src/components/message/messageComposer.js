@@ -45,7 +45,10 @@ class MessageComposer extends Component {
         var text = this.state.text;
 
         postMessage(text, accessToken)
-          .then(message => this.props.navigator.pop())
+          .then((message) => {
+            this.props.route.callback();
+            this.props.navigator.pop();
+          })
           .catch(err => console.log(err));
       })
   }
