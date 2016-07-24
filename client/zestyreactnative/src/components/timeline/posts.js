@@ -5,6 +5,7 @@ import {
   View
 } from 'react-native';
 import MessageList from '../message/messageList';
+import NavBar from '../common/navBar';
 import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
@@ -45,6 +46,7 @@ class Posts extends Component {
   render() {
     return (
       <View style={ [ styles.container, border('red') ] }>
+        <NavBar navigator={ this.props.navigator } />
         <Text style={ styles.header}>Posts</Text>
 
         <View style={ styles.buttonContainer } >
