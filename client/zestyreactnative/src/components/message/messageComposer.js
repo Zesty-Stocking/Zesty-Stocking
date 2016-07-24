@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import NavBar from '../common/navBar';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
 
 const styles = StyleSheet.create({

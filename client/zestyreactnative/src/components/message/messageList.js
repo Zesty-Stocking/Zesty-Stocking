@@ -6,7 +6,6 @@ import {
   View
 } from 'react-native';
 import Message from './message';
-import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
 const ds = new ListView.DataSource({

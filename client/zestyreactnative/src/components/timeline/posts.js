@@ -7,7 +7,6 @@ import {
 import MessageList from '../message/messageList';
 import NavBar from '../common/navBar';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
 var dummyMessages = [
@@ -45,13 +44,13 @@ class Posts extends Component {
 
   render() {
     return (
-      <View style={ [ styles.container, border('red') ] }>
+      <View style={ styles.container }>
         <NavBar navigator={ this.props.navigator } />
         <Text style={ styles.header}>Posts</Text>
 
         <View style={ styles.buttonContainer } >
           <Button
-            style={ [ styles.button, border('olive') ] }
+            style={ styles.button }
             text={ 'Compose' }
             onPress={ this.onPressCompose } />
         </View>
