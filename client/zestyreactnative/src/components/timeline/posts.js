@@ -4,44 +4,59 @@ import {
   Text,
   View
 } from 'react-native';
-import Message from '../message/view';
-import { border } from '../../../helpers/scaffolding';
+import MessageList from '../message/messageList';
+import Button from '../common/button';
+import { border } from '../../helpers/scaffolding';
 
-var Posts = ({ messages }) => {
-  var renderedMessage = ({ user, text, likes }, index) => {
+class Posts extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onPressCompose = this.onPressCompose.bind(this);
+  }
+
+  onPressCompose() {
+    this.props.navigator.push({ name: 'messageComposer' });
+  }
+
+  render() {
     return (
-      <Message
-        user={ user }
-        text={ text }
-        likes={ likes }
-        key={ index }
-        style={ styles.member } />
-    );
-  };
+      <View style={ [ styles.container, border('red') ] }>
+        <Text style={ styles.header}>Posts</Text>
 
-  var listOfMessages = () => {
-    messages = messages || [];
-    return messages.map(renderedMessage);
-  };
+        <View style={ styles.buttonContainer } >
+          <Button
+            style={ [ styles.button, border('olive') ] }
+            text={ 'Compose' }
+            onPress={ this.onPressCompose }
+          />
+        </View>
 
-  return (
-    <View style={ [ styles.container, border('red') ] }>
-      <Text>Messages</Text>
-
-      <View style={ styles.collection  }>
-        { listOfMessages() }
+        <View>
+          <MessageList />
+        </View>
       </View>
-    </View>
-  );
+    );
+  }
 }
 
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'white'
+  },
+  header: {
+    fontSize: 32,
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  button: {
+    width: 150,
+    marginBottom: 10
   }
 });
 
-export default Posts
+export default Posts;
