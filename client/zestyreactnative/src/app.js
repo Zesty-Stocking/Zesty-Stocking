@@ -37,7 +37,8 @@ class App extends Component {
         style={ styles.container }
         initialRoute={ { name: 'signin' } }
         renderScene={ this.renderScene }
-        configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } } />
+        configureScene={ () => { return Navigator.SceneConfigs.FloatFromRight; } } 
+      />
     );
   }
 }
