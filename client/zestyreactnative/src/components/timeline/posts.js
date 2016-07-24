@@ -5,7 +5,6 @@ import {
   View
 } from 'react-native';
 import MessageList from '../message/messageList';
-import Button from '../common/button';
 import { getMessages } from '../../helpers/api';
 
 var dummyMessages = [
@@ -16,7 +15,6 @@ var dummyMessages = [
 class Posts extends Component {
   constructor(props) {
     super(props);
-    this.onPressCompose = this.onPressCompose.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
     this.state = {
       data: dummyMessages,
@@ -26,10 +24,6 @@ class Posts extends Component {
 
   componentWillMount() {
     this.updateMessages();
-  }
-
-  onPressCompose() {
-    this.props.navigator.push({name: 'messageComposer', callback: this.updateMessages });
   }
 
   updateMessages() {
@@ -44,17 +38,12 @@ class Posts extends Component {
   render() {
     return (
       <View style={ styles.container }>
-        <Text style={ styles.header}>Posts</Text>
-
-        <View style={ styles.buttonContainer } >
-          <Button
-            style={ styles.button }
-            text={ 'Compose' }
-            onPress={ this.onPressCompose } />
-        </View>
-
         <View>
-          <MessageList data={this.state.data} error={this.state.error} />
+          <MessageList
+            data={ this.state.data }
+            error={ this.state.error }
+            updateMessages={ this.updateMessages }
+          />
         </View>
       </View>
     );
@@ -66,18 +55,6 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white'
-  },
-  header: {
-    fontSize: 32,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  button: {
-    width: 150,
-    marginBottom: 10
   }
 });
 

@@ -6,6 +6,7 @@ import {
   View
 } from 'react-native';
 import Message from './message';
+import Button from '../common/button';
 import { getMessages } from '../../helpers/api';
 
 const ds = new ListView.DataSource({
@@ -15,6 +16,33 @@ const ds = new ListView.DataSource({
 class MessageList extends Component {
   constructor(props) {
     super(props);
+
+    this.onPressCompose = this.onPressCompose.bind(this);
+    // the footer component uses `this`, best to bind it here.
+    this.footer = this.footer.bind(this);
+  }
+
+  render() {
+    return (
+      <View style={ [ styles.container ] }>
+        <ListView
+          dataSource={ ds.cloneWithRows(this.props.data) }
+          renderHeader={ this.header }
+          renderRow={ this.renderMessage }
+          renderSeparator={ this.separator }
+          renderFooter={ this.footer }
+        />
+      </View>
+    );
+  }
+
+  onPressCompose() {
+    var route = {
+      name: 'messageComposer',
+      callback: this.props.updateMessages
+    };
+
+    this.props.navigator.push(route);
   }
 
   renderMessage({ User, text, likes }, index) {
@@ -28,8 +56,14 @@ class MessageList extends Component {
     );
   }
 
-  separator(sectionId, rowId) {
+  header() {
     return(
+      <Text style={ styles.header }>Posts</Text>
+    );
+  }
+
+  separator(sectionId, rowId) {
+    return (
       <View
         key={ `${sectionId}:${rowId}` }
         style={ styles.separator }
@@ -37,14 +71,13 @@ class MessageList extends Component {
     );
   }
 
-  render() {
+  footer() {
     return (
-      <View style={ [ styles.container ] }>
-        <ListView
-          dataSource={ ds.cloneWithRows(this.props.data) }
-          renderRow={ this.renderMessage }
-          renderSeparator={ this.separator }
-        />
+      <View style={ styles.footer } >
+        <Button
+          style={ styles.button }
+          text={ 'Compose' }
+          onPress={ this.onPressCompose } />
       </View>
     );
   }
@@ -55,11 +88,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
+  header: {
+    fontSize: 32,
+    textAlign: 'center'
+  },
   separator: {
     marginTop: 5,
     marginBottom: 5,
     height: StyleSheet.hairlineWidth,
     backgroundColor: '#333'
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  button: {
+    width: 150,
+    marginBottom: 10
   }
 });
 
