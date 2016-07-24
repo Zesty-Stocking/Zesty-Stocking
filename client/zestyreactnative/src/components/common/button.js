@@ -7,10 +7,13 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-var Button = ({ text, onPress }) => {
+/**
+ * @param otherStyles, { Object }, allow a parent component to pass in styles
+ */
+var Button = ({ text, onPress, style }) => {
   return (
     <TouchableHighlight
-      style={ styles.button }
+      style={ [ styles.button, style ] }
       underlayColor={ 'gray' }
       onPress={ onPress }
     >
