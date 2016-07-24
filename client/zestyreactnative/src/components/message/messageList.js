@@ -26,6 +26,7 @@ class MessageList extends Component {
     return (
       <View style={ [ styles.container ] }>
         <ListView
+          style={ styles.body }
           dataSource={ ds.cloneWithRows(this.props.data) }
           renderHeader={ this.header }
           renderRow={ this.renderMessage }
@@ -58,7 +59,9 @@ class MessageList extends Component {
 
   header() {
     return(
-      <Text style={ styles.header }>Posts</Text>
+      <View>
+        <Text style={ styles.headerText }>Posts</Text>
+      </View>
     );
   }
 
@@ -88,9 +91,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
-  header: {
+  headerText: {
     fontSize: 32,
     textAlign: 'center'
+  },
+  body: {
+    // a specific height is needed to get Android to scroll!
+    // http://stackoverflow.com/a/32880205/2908123
+    height: 500,
   },
   separator: {
     marginTop: 5,
