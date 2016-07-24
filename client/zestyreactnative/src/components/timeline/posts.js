@@ -7,33 +7,42 @@ import {
 import Message from '../message/view';
 import { border } from '../../../helpers/scaffolding';
 
-var Posts = ({ messages }) => {
-  var renderedMessage = ({ user, text, likes }, index) => {
+class Posts extends Component {
+
+  constructor(props) {
+    super(props);
+    this.renderListOfMessages = this.renderListOfMessages.bind(this);
+  }
+
+  renderMessage(message, index) {
     return (
       <Message
-        user={ user }
-        text={ text }
-        likes={ likes }
-        key={ index }
-        style={ styles.member } />
+        user = {message.user}
+        text = {message.text}
+        likes = {message.likes}
+        key = {index}
+        style = {styles.member} />
     );
-  };
+  }
 
-  var listOfMessages = () => {
-    messages = messages || [];
-    return messages.map(renderedMessage);
-  };
+  renderListOfMessages() {
+    var messages = this.props.messages || [];
+    return messages.map(this.renderMessage);
+  }
 
-  return (
-    <View style={ [ styles.container, border('red') ] }>
-      <Text>Messages</Text>
+  render () {
+    return (
+      <View style={[styles.container, border('red')]}>
+        <Text>Messages</Text>
 
-      <View style={ styles.collection  }>
-        { listOfMessages() }
+        <View style={styles.collection}>
+          {this.renderListOfMessages()}
+        </View>
       </View>
-    </View>
-  );
-}
+    );
+  }
+
+};
 
 var styles = StyleSheet.create({
   container: {
@@ -44,4 +53,4 @@ var styles = StyleSheet.create({
   }
 });
 
-export default Posts
+export default Posts;
