@@ -13,7 +13,16 @@ import { postMessage } from '../../helpers/api';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
+    padding: 10
+  },
+  textInput: {
+    height: 60,
+    fontSize: 28,
+  },
+  textPreview: {
+    padding: 10,
+    fontSize: 18
   }
 });
 
@@ -43,13 +52,13 @@ class MessageComposer extends Component {
 
   render() {
     return (
-      <View style={ { padding: 10 } }>
+      <View style={ styles.container }>
         <TextInput
-          style={ { height: 40 } }
+          style={ styles.textInput }
           placeholder='Type here'
           onChangeText={ (text) => this.setState({ text }) }
         />
-        <Text style={{padding: 10, fontSize: 42}}>
+        <Text style={ styles.textPreview }>
           { this.state.text }
         </Text>
 
