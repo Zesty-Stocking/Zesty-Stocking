@@ -6,7 +6,6 @@ import {
   Image
 } from 'react-native';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
 
 //This is where we put our backend oauth endpoint url
