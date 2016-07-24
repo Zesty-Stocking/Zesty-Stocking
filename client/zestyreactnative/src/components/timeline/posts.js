@@ -18,6 +18,7 @@ class Posts extends Component {
   constructor(props) {
     super(props);
     this.onPressCompose = this.onPressCompose.bind(this);
+    this.updateMessages = this.updateMessages.bind(this);
     this.state = {
       data: dummyMessages,
       error: ''
@@ -29,7 +30,7 @@ class Posts extends Component {
   }
 
   onPressCompose() {
-    this.props.navigator.push({name: 'messageComposer', callback: this.updateMessages.bind(this) });
+    this.props.navigator.push({name: 'messageComposer', callback: this.updateMessages });
   }
 
   updateMessages() {
