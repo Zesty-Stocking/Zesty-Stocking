@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import MessageList from '../message/messageList';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
 var dummyMessages = [
@@ -17,8 +16,11 @@ var dummyMessages = [
 class Posts extends Component {
   constructor(props) {
     super(props);
-    this.onPressCompose = this.onPressCompose.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
+    this.onPressCompose = this.onPressCompose.bind(this);
+    // the footer component uses `this`, best to bind it here.
+    this.footer = this.footer.bind(this);
+
     this.state = {
       data: dummyMessages,
       error: ''
@@ -27,10 +29,6 @@ class Posts extends Component {
 
   componentWillMount() {
     this.updateMessages();
-  }
-
-  onPressCompose() {
-    this.props.navigator.push({name: 'messageComposer', callback: this.updateMessages });
   }
 
   updateMessages() {
@@ -42,21 +40,36 @@ class Posts extends Component {
       .catch((err) => this.setState({ error: err }) );
   }
 
+  footer() {
+    return (
+      <View style={ styles.footer } >
+        <Button
+          style={ styles.button }
+          text={ 'Compose' }
+          onPress={ this.onPressCompose } />
+      </View>
+    );
+  }
+
+  onPressCompose() {
+    var route = {
+      name: 'messageComposer',
+      callback: this.updateMessages
+    };
+
+    this.props.navigator.push(route);
+  }
+
   render() {
     return (
-      <View style={ [ styles.container, border('red') ] }>
-        <Text style={ styles.header}>Posts</Text>
-
-        <View style={ styles.buttonContainer } >
-          <Button
-            style={ [ styles.button, border('olive') ] }
-            text={ 'Compose' }
-            onPress={ this.onPressCompose } />
-        </View>
-
+      <View style={ styles.container }>
         <View>
-          <MessageList data={this.state.data} error={this.state.error} />
+          <MessageList
+            data={ this.state.data }
+            error={ this.state.error }
+          />
         </View>
+        { this.footer() }
       </View>
     );
   }
@@ -68,11 +81,7 @@ var styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white'
   },
-  header: {
-    fontSize: 32,
-    textAlign: 'center'
-  },
-  buttonContainer: {
+  footer: {
     flexDirection: 'row',
     justifyContent: 'center',
   },

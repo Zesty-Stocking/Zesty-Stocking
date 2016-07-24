@@ -7,7 +7,6 @@ import {
   View
 } from 'react-native';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
 
 const styles = StyleSheet.create({

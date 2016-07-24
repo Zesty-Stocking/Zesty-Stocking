@@ -5,7 +5,6 @@ import {
   Text,
   View
 } from 'react-native';
-import { border } from '../../helpers/scaffolding';
 
 var Message = ({ User, text, likes }) => {
   if (User) {
@@ -19,7 +18,7 @@ var Message = ({ User, text, likes }) => {
 
   // https://facebook.github.io/react-native/docs/images.html#network-images
   return (
-    <View style={ [ styles.container, border('black') ] }>
+    <View style={ styles.container }>
       <View style={ styles.left }>
         <Image
           source={ { uri: avatarUrl } }
@@ -68,9 +67,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   rightTop: {
-    borderBottomWidth: 1,
     paddingBottom: 5,
-
   },
   rightMiddle: {
 
