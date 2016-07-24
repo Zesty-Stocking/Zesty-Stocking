@@ -5,7 +5,7 @@ import {
   View,
   AsyncStorage
 } from 'react-native';
-import NavigationBar from 'react-native-navbar';
+import NavBar from '../common/navBar';
 var myLocalIp = require('../../helpers/scaffolding').myLocalIp;
 
 const host = myLocalIp || 'localhost';
@@ -13,21 +13,21 @@ const TOKEN_URL = `http://${host}:4568/account?`
 
 class OAuthWebView extends Component {
   render() {
-
     var leftButtonConfig = {
-        title: 'Back',
-        handler: this.onBackPress.bind(this)
-      };
+      title: 'Back',
+      handler: this.onBackPress.bind(this)
+    };
 
     var titleConfig = {
-        title: 'Sign in with Github',
-      };
+      title: 'Sign in with Github',
+    };
 
     return (
       <View style={{flex: 1}}>
-        <NavigationBar
-          title={titleConfig}
-              leftButton={leftButtonConfig} />
+        <NavBar
+          title={ titleConfig }
+          leftButton={ leftButtonConfig }
+        />
         <WebView
           source={{uri: this.props.route.url}}
           style={styles.webview}
