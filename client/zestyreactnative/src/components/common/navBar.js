@@ -10,26 +10,22 @@ const defaultTitle = {
   tintColor: defaults.tintColor
 };
 
-const defaultLeftButton = {
-  title: '<=',
-  tintColor: defaults.tintColor
-};
-
-const defaultRightButton = {
-  title: '=>',
-  tintColor: defaults.tintColor
-};
-
 var NavBar = (props) => {
-  var titleConfig = props.title || defaultTitle;
-  var leftButtonConfig = props.leftButton || defaultLeftButton;
-  var rightButtonConfig = props.rightButton || defaultRightButton;
+  var defaultLeftButton = {
+    title: '<=',
+    tintColor: defaults.tintColor,
+    handler: () => {
+      props.navigator.pop();
+    }
+  };
+
+  var title = props.title || defaultTitle;
+  var leftButton = props.leftButton || defaultLeftButton;
 
   return (
     <NavigationBar
-      title={ titleConfig }
-      leftButton={ leftButtonConfig }
-      rightButton={ rightButtonConfig }
+      title={ title }
+      leftButton={ leftButton }
     />
   );
 };

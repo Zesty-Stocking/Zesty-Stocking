@@ -6,6 +6,7 @@ import {
   TextInput,
   View
 } from 'react-native';
+import NavBar from '../common/navBar';
 import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
@@ -54,8 +55,12 @@ class MessageComposer extends Component {
   }
 
   render() {
+
     return (
       <View style={ styles.container }>
+        <NavBar
+          navigator={ this.props.navigator }
+        />
         <TextInput
           style={ styles.textInput }
           placeholder='Type here'
