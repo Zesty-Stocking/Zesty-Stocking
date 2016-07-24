@@ -28,7 +28,7 @@ var Message = ({ User, text, likes }) => {
       </View>
       <View style={ styles.right }>
         <View style={ [ styles.rightTop ] }>
-          <Text>{ `@${username}` } | { location }</Text>
+          <Text>{ `@${username}` } { location ? '| ' + location : '' }</Text>
         </View>
         <View style={ [ styles.rightMiddle ] } >
           <Text>{ text }</Text>
