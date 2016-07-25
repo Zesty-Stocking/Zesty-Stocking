@@ -28,7 +28,7 @@ var Message = ({ User, text, likes }) => {
         </View>
         <View style={ [ styles.rightBottom ] } >
           <Text>
-            Likes: { likes }
+            Groks: { likes }
           </Text>
         </View>
       </View>

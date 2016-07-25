@@ -70,7 +70,7 @@ class Posts extends Component {
           navigator={ this.props.navigator }
           leftButton={ leftButton }
         />
-        <Text style={ styles.header}>Posts</Text>
+        <Text style={ styles.header}>Bytes</Text>
 
         <View style={ styles.buttonContainer } >
           <Button
