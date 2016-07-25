@@ -61,9 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   rightTop: {
-    borderBottomWidth: 1,
     paddingBottom: 5,
-
   },
   rightMiddle: {
 
