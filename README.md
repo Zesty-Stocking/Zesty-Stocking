@@ -21,4 +21,9 @@ To start the local server, first start the mysql server (if not already running)
 
       $ npm start
 
-  
+
+To deploy to production [on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction), run
+
+      $ heroku create
+      $ git push heroku master
+      $ heroku open
