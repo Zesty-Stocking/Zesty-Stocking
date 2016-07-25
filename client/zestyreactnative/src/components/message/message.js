@@ -2,41 +2,56 @@ import React, { Component } from 'react';
 import {
   Image,
   StyleSheet,
-  Text,
+  // Text,
   View
 } from 'react-native';
+import { Container, Content, Card, CardItem, Thumbnail, Text, Button, Icon } from 'native-base';
+import { border } from '../../helpers/scaffolding';
 
-var Message = ({ User, text, likes }) => {
-  if (User) {
-    var { username, name, location, avatarUrl } = User;
-  } 
-  // https://facebook.github.io/react-native/docs/images.html#network-images
-  return (
-    <View style={ styles.container }>
-      <View style={ styles.left }>
-        <Image
-          source={ { uri: avatarUrl } }
-          style={ styles.photo }
-        />
-      </View>
-      <View style={ styles.right }>
-        <View style={ [ styles.rightTop ] }>
-          <Text>{ `@${username}` } { location ? '| ' + location : '' }</Text>
-        </View>
-        <View style={ [ styles.rightMiddle ] } >
-          <Text>{ text }</Text>
-        </View>
-        <View style={ [ styles.rightBottom ] } >
-          <Text>
-            Groks: { likes }
-          </Text>
-        </View>
-      </View>
-    </View>
-  );
+export default class Message extends Component {
+
+    constructor(props) {
+      super(props);
+      if (this.props.User) {
+        this.username = this.props.User.username;
+        this.name = this.props.User.name;
+        this.location = this.props.User.location;
+        this.avatarUrl = this.props.User.avatarUrl;
+      }
+    }
+
+    render() {
+      return (
+        <View>
+            <Card>
+              <CardItem>
+                <Thumbnail 
+                  style={ styles.photo }
+                  source={{uri: this.avatarUrl}} />
+                <Text style={{fontWeight: 'bold'}}>{this.name ? this.name : this.username}</Text>
+                <Text note>{ `@${this.username}` }</Text>
+                <Text note>{this.props.createdAt}</Text>
+              </CardItem>
+
+              <CardItem style={styles.messagebox}>
+                <Text>
+                  {this.props.text}
+                </Text>
+                <Button transparent textStyle={{color: '#87838B'}}>
+                  <Icon name="ios-heart" />
+                  { `${this.props.likes} groks` }
+                </Button>
+              </CardItem>
+           </Card>
+          </View>
+      );
+    }
 }
 
 const styles = StyleSheet.create({
+  messagebox: {
+    backgroundColor: '#F5FCFF'
+  },
   container: {
     flex: 1,
     padding: 5,
@@ -56,11 +71,12 @@ const styles = StyleSheet.create({
     flex: 5
   },
   photo: {
-    height: 55,
-    width: 55,
-    borderRadius: 30,
+    height: 50,
+    width: 50,
+    borderRadius: 4,
   },
   rightTop: {
+    borderBottomWidth: 1,
     paddingBottom: 5,
   },
   rightMiddle: {
