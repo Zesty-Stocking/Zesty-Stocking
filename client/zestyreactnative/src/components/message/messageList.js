@@ -6,7 +6,6 @@ import {
   View
 } from 'react-native';
 import Message from './message';
-import { border } from '../../helpers/scaffolding';
 import { getMessages } from '../../helpers/api';
 
 const ds = new ListView.DataSource({
@@ -16,9 +15,8 @@ const ds = new ListView.DataSource({
 class MessageList extends Component {
   constructor(props) {
     super(props);
-    this.renderMessage = this.renderMessage.bind(this);
   }
-  
+
   renderMessage({ User, text, likes }, index) {
     return (
       <Message
@@ -30,12 +28,22 @@ class MessageList extends Component {
     );
   }
 
+  separator(sectionId, rowId) {
+    return(
+      <View
+        key={ `${sectionId}:${rowId}` }
+        style={ styles.separator }
+      />
+    );
+  }
+
   render() {
     return (
       <View style={ [ styles.container ] }>
         <ListView
           dataSource={ ds.cloneWithRows(this.props.data) }
           renderRow={ this.renderMessage }
+          renderSeparator={ this.separator }
           enableEmptySections
         />
       </View>
@@ -47,6 +55,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
+  },
+  separator: {
+    marginTop: 5,
+    marginBottom: 5,
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#333'
   }
 });
 

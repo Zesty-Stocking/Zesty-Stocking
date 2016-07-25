@@ -5,7 +5,7 @@ import {
   View,
   AsyncStorage
 } from 'react-native';
-import NavigationBar from 'react-native-navbar';
+import NavBar from '../common/navBar';
 var myLocalIp = require('../../helpers/scaffolding').myLocalIp;
 
 const host = myLocalIp || 'localhost';
@@ -13,21 +13,21 @@ const TOKEN_URL = `http://${host}:4568/account?`
 
 class OAuthWebView extends Component {
   render() {
-
     var leftButtonConfig = {
-        title: 'Back',
-        handler: this.onBackPress.bind(this)
-      };
+      title: 'Back',
+      handler: this.onBackPress.bind(this)
+    };
 
     var titleConfig = {
-        title: 'Sign in with Github',
-      };
+      title: 'Sign in with GitHub',
+    };
 
     return (
       <View style={{flex: 1}}>
-        <NavigationBar
-          title={titleConfig}
-              leftButton={leftButtonConfig} />
+        <NavBar
+          title={ titleConfig }
+          leftButton={ leftButtonConfig }
+        />
         <WebView
           source={{uri: this.props.route.url}}
           style={styles.webview}
@@ -39,8 +39,8 @@ class OAuthWebView extends Component {
   onNavigationStateChange(navState) {
     //This is where we check whether the url is our payload url
     // if so, we exit webview and log in the user
-    console.log('loading new page');
-    console.log('navState object:', navState);
+    // console.log('loading new page');
+    // console.log('navState object:', navState);
     //check URL and only do it when navstate.loading is false, meaning page is done loading
     if (navState.url.startsWith(TOKEN_URL) && navState.loading === false) {
       //grab access token
@@ -49,7 +49,7 @@ class OAuthWebView extends Component {
       //store accessToken in asyncStorage
       AsyncStorage.setItem('accessToken', accessToken)
         .then(() => {
-          console.log('set access token in async storage:', accessToken);
+          // console.log('set access token in async storage:', accessToken);
           //exit webview here -
           //we need to leave the context of authentication views (see udemy course, lecture 69)
           //reset route stack and push posts route on navigator

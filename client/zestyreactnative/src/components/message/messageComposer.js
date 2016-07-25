@@ -6,8 +6,8 @@ import {
   TextInput,
   View
 } from 'react-native';
+import NavBar from '../common/navBar';
 import Button from '../common/button';
-import { border } from '../../helpers/scaffolding';
 import { postMessage } from '../../helpers/api';
 
 const styles = StyleSheet.create({
@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     padding: 10,
-    alignItems: 'center'
   },
   textInput: {
     height: 210,
@@ -62,8 +61,13 @@ class MessageComposer extends Component {
   }
 
   render() {
+
     return (
       <View style={ styles.container }>
+        <NavBar
+          navigator={ this.props.navigator }
+          title={ { title: 'Compose a Byte', tintColor: '#333' }}
+        />
         <View style={ styles.inputWrapper }>
           <TextInput
             style={ styles.textInput }
@@ -72,14 +76,13 @@ class MessageComposer extends Component {
             multiline={true}
             numberOfLines={5}
             maxLength={140}
-            onChangeText={ (text) => this.setState({ 
+            onChangeText={ (text) => this.setState({
               text: text,
-              buttonDisabled: false 
-              }) 
+              buttonDisabled: false
+              })
             }
           />
         </View>
-
         <Button
           text={ 'Send' }
           onPress={ this.onPressSend }
