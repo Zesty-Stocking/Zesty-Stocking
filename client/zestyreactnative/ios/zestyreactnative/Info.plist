@@ -51,14 +51,6 @@
     </dict>
     <key>UIAppFonts</key>
     <array>
-      <string>Zocial.ttf</string>
-      <string>Octicons.ttf</string>
-      <string>MaterialIcons.ttf</string>
-      <string>Foundation.ttf</string>
-      <string>FontAwesome.ttf</string>
-      <string>EvilIcons.ttf</string>
-      <string>Entypo.ttf</string>
-      <string>Ionicons.ttf</string>
       <string>Andale Mono.ttf</string>
       <string>Arial Black.ttf</string>
       <string>Arial.ttf</string>

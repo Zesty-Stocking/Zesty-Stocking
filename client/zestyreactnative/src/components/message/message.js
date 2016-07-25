@@ -38,6 +38,7 @@ export default class Message extends Component {
                   {this.props.text}
                 </Text>
                 <Button transparent textStyle={{color: '#87838B'}}>
+                  <Icon name="ios-heart" />
                   { `${this.props.likes} groks` }
                 </Button>
               </CardItem>
@@ -77,7 +78,6 @@ const styles = StyleSheet.create({
   rightTop: {
     borderBottomWidth: 1,
     paddingBottom: 5,
-
   },
   rightMiddle: {
 

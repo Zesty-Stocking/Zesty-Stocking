@@ -78,38 +78,40 @@ class Posts extends Component {
     };
 
     return (
-      <ScrollView style={ styles.container }>
+      <View style={ styles.container }>
         <NavBar
           navigator={ this.props.navigator }
           title={ title }
           leftButton={ leftButton }
         />
+        
+        <ScrollView style={ styles.container }>
 
-        <View style={ styles.buttonContainer } >
-          <Button
-            style={ styles.button }
-            text={ 'Compose a Byte' }
-            onPress={ this.onPressCompose } />
+          <View style={{ flex: 1 }}>
+            <Spinner visible={this.state.visible} />
+          </View>
+
+          <View>
+            <MessageList data={this.state.data} error={this.state.error} />
+          </View>
+
+        </ScrollView>
+        <View >
+          <ActionButton 
+            offsetY={30}
+            style={styles.actionButton}
+            >
+            <ActionButton.Item
+              buttonColor="rgba(231,76,60,1)"
+              onPress={this.onPressCompose}
+            >
+              <Icon 
+                style={styles.actionButtonIcon}
+                name="md-create" /> 
+            </ActionButton.Item>
+          </ActionButton>
         </View>
-
-        <View style={{ flex: 1 }}>
-          <Spinner visible={this.state.visible} />
-        </View>
-
-        <View>
-          <MessageList data={this.state.data} error={this.state.error} />
-          {/*
-            //trying to get action button to work -- icons still not working
-          <ActionButton.Item
-            buttonColor="rgba(231,76,60,1)"
-            onPress={() => { console.log("hi")}}
-          >
-           <Icon />
-          </ActionButton.Item>
-        */}
-        </View>
-
-      </ScrollView>
+      </View>
     );
   }
 
@@ -124,12 +126,13 @@ var styles = StyleSheet.create({
     fontSize: 32,
     textAlign: 'center'
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  actionButton: {
+    // paddingBottom: 20  
   },
-  button: {
-    marginBottom: 10
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   }
 });
 
