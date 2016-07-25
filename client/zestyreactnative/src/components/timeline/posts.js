@@ -43,7 +43,6 @@ class Posts extends Component {
     console.log('getting new messages!');
     getMessages()
       .then((json) => {
-        console.log(json);
         this.setState({ data: json, visible: false });
       })
       .catch((err) => this.setState({ error: err }) );
@@ -84,7 +83,7 @@ class Posts extends Component {
           title={ title }
           leftButton={ leftButton }
         />
-        
+
         <ScrollView style={ styles.container }>
 
           <View style={{ flex: 1 }}>
