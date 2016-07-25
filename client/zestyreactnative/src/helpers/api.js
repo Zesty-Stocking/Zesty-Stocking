@@ -1,10 +1,10 @@
 var myLocalIp = require('./scaffolding.js').myLocalIp;
 
 var ipAddress = myLocalIp || 'localhost';
-const baseUrl = `http://${ipAddress}:4568/api`;
+const baseUrl = `http://${ipAddress}:4568`;
 
 module.exports.getMessages = () => {
-  var url = `${baseUrl}/messages`;
+  var url = `${baseUrl}/api/messages`;
 
   return fetch(url)
     .then((response) => response.json() )
@@ -13,7 +13,7 @@ module.exports.getMessages = () => {
 };
 
 module.exports.postMessage = (text, accessToken) => {
-  var url = `${baseUrl}/messages`;
+  var url = `${baseUrl}/api/messages`;
   var message = {
     text: text,
     accessToken: accessToken
@@ -30,6 +30,15 @@ module.exports.postMessage = (text, accessToken) => {
   };
 
   return fetch(url, fetchOpts)
+    .then((response) => response.json() )
+    .then((json) => json )
+    .catch((err) =>  err );
+};
+
+module.exports.logout = () => {
+  var url = `${baseUrl}/logout`;
+
+  return fetch(url)
     .then((response) => response.json() )
     .then((json) => json )
     .catch((err) =>  err );
