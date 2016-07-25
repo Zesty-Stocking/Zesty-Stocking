@@ -10,19 +10,6 @@ import NavBar from '../common/navBar';
 import Button from '../common/button';
 import { getMessages, getLogout } from '../../helpers/api';
 
-var logoutUser = (navigator) => {
-  getLogout()
-    .then(function() {
-      AsyncStorage.removeItem('accessToken');
-
-      var routeStack = [
-        { name: 'signin' }
-      ];
-
-      navigator.immediatelyResetRouteStack(routeStack);
-    });
-};
-
 class Posts extends Component {
   constructor(props) {
     super(props);
@@ -34,6 +21,7 @@ class Posts extends Component {
 
     this.onPressCompose = this.onPressCompose.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
+    this.logoutUser = this.logoutUser.bind(this);
   }
 
   componentWillMount() {
@@ -53,11 +41,27 @@ class Posts extends Component {
       .catch((err) => this.setState({ error: err }) );
   }
 
+  logoutUser () {
+    // save reference *outside* of the promise callback
+    var navigator = this.props.navigator;
+
+    getLogout()
+      .then(function() {
+        AsyncStorage.removeItem('accessToken');
+
+        var routeStack = [
+          { name: 'signin' }
+        ];
+
+        navigator.immediatelyResetRouteStack(routeStack);
+      });
+  };
+
   render() {
     var leftButton = {
       title: 'Sign Out',
       tintColor: '#333',
-      handler: () => logoutUser(this.props.navigator)
+      handler: () => this.logoutUser()
     };
 
     return (
