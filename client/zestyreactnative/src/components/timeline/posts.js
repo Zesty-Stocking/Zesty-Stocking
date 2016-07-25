@@ -3,8 +3,10 @@ import {
   AsyncStorage,
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 import MessageList from '../message/messageList';
 import NavBar from '../common/navBar';
 import Button from '../common/button';
@@ -16,7 +18,8 @@ class Posts extends Component {
 
     this.state = {
       data: [],
-      error: ''
+      error: '',
+      visible: true
     }
 
     this.onPressCompose = this.onPressCompose.bind(this);
@@ -36,7 +39,7 @@ class Posts extends Component {
     console.log('getting new messages!');
     getMessages()
       .then((json) => {
-        this.setState({ data: json });
+        this.setState({ data: json, visible: false });
       })
       .catch((err) => this.setState({ error: err }) );
   }
@@ -65,7 +68,7 @@ class Posts extends Component {
     };
 
     return (
-      <View style={ styles.container }>
+      <ScrollView style={ styles.container }>
         <NavBar
           navigator={ this.props.navigator }
           leftButton={ leftButton }
@@ -79,10 +82,14 @@ class Posts extends Component {
             onPress={ this.onPressCompose } />
         </View>
 
+        <View style={{ flex: 1 }}>
+          <Spinner visible={this.state.visible} />
+        </View>
+
         <View>
           <MessageList data={this.state.data} error={this.state.error} />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 
