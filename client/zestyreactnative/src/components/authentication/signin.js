@@ -32,7 +32,6 @@ class Signin extends Component {
             resizeMode='contain' />
         </View>
         <View style={ [ styles.bottom ] } >
-          
           <Button
             style={styles.button}
             text={'Sign in with GitHub'}
