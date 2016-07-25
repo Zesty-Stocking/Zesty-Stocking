@@ -47,7 +47,7 @@ class Posts extends Component {
 
         <View style={ styles.buttonContainer } >
           <Button
-            style={ [ styles.button, border('olive') ] }
+            style={ [ styles.button ] }
             text={ 'Compose' }
             onPress={ this.onPressCompose } />
         </View>
@@ -79,7 +79,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    width: 150,
     marginBottom: 10
   }
 });

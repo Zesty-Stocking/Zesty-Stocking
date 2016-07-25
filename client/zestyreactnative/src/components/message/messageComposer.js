@@ -14,15 +14,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    padding: 10
+    padding: 10,
+    alignItems: 'center'
   },
   textInput: {
-    height: 60,
+    height: 210,
     fontSize: 28,
+    marginTop: 10,
+    padding: 10
   },
-  textPreview: {
-    padding: 10,
-    fontSize: 18
+  inputWrapper: {
+    alignSelf: 'stretch',
+    borderWidth: 0.5,
+    borderColor: '#0f0f0f',
+    borderRadius: 5,
+    marginTop: 10,
+    marginBottom: 10
   }
 });
 
@@ -31,7 +38,8 @@ class MessageComposer extends Component {
     super(props);
 
     this.state = {
-      text: ''
+      text: '',
+      buttonDisabled: true
     };
 
     this.onPressSend = this.onPressSend.bind(this);
@@ -56,18 +64,26 @@ class MessageComposer extends Component {
   render() {
     return (
       <View style={ styles.container }>
-        <TextInput
-          style={ styles.textInput }
-          placeholder='Type here'
-          onChangeText={ (text) => this.setState({ text }) }
-        />
-        <Text style={ styles.textPreview }>
-          { this.state.text }
-        </Text>
+        <View style={ styles.inputWrapper }>
+          <TextInput
+            style={ styles.textInput }
+            placeholder='Type here'
+            autoFocus={true}
+            multiline={true}
+            numberOfLines={5}
+            maxLength={140}
+            onChangeText={ (text) => this.setState({ 
+              text: text,
+              buttonDisabled: false 
+              }) 
+            }
+          />
+        </View>
 
         <Button
           text={ 'Send' }
           onPress={ this.onPressSend }
+          disabled={ this.state.buttonDisabled }
         />
       </View>
     );
