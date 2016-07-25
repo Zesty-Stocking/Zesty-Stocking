@@ -25,13 +25,14 @@ class Signin extends Component {
     return(
       <View style={ styles.container } >
         <View style={ [ styles.top ] } >
+          <Text style={styles.title}>#HashItOut</Text>
           <Image
             source={ require('../../assets/hashtag.png') }
             style={ styles.image }
             resizeMode='contain' />
         </View>
         <View style={ [ styles.bottom ] } >
-          <Text style={styles.title}>#HashItOut</Text>
+          
           <Button
             style={styles.button}
             text={'Sign in with GitHub'}
@@ -58,6 +59,7 @@ var styles = StyleSheet.create({
   top: {
     flex: 5,
     justifyContent: 'flex-start',
+    alignItems: 'center',
     marginTop: 50,
   },
   bottom: {
@@ -71,7 +73,7 @@ var styles = StyleSheet.create({
     height: 250
   },
   title: {
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: '200',
     color: 'white'
   },
