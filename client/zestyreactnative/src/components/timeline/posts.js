@@ -4,6 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Spinner from 'react-native-loading-spinner-overlay';
 import MessageList from '../message/messageList';
 import Button from '../common/button';
 import { border } from '../../helpers/scaffolding';
@@ -16,7 +17,8 @@ class Posts extends Component {
     this.updateMessages = this.updateMessages.bind(this);
     this.state = {
       data: [],
-      error: ''
+      error: '',
+      visible: true
     }
   }
 
@@ -32,7 +34,7 @@ class Posts extends Component {
     console.log('getting new messages!');
     getMessages()
       .then((json) => {
-        this.setState({ data: json });
+        this.setState({ data: json, visible: false });
       })
       .catch((err) => this.setState({ error: err }) );
   }
@@ -47,6 +49,10 @@ class Posts extends Component {
             style={ [ styles.button, border('olive') ] }
             text={ 'Compose' }
             onPress={ this.onPressCompose } />
+        </View>
+
+        <View style={{ flex: 1 }}>
+          <Spinner visible={this.state.visible} />
         </View>
 
         <View>
