@@ -39,6 +39,7 @@ class Posts extends Component {
     console.log('getting new messages!');
     getMessages()
       .then((json) => {
+        console.log(json);
         this.setState({ data: json, visible: false });
       })
       .catch((err) => this.setState({ error: err }) );

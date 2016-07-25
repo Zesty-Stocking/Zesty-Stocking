@@ -16,13 +16,14 @@ class MessageList extends Component {
   constructor(props) {
     super(props);
   }
-
-  renderMessage({ User, text, likes }, index) {
+  
+  renderMessage({ User, text, likes, createdAt }, index) {
     return (
       <Message
         User={ User }
         text={ text }
         likes={ likes }
+        createdAt={ createdAt }
         key={ index }
       />
     );
