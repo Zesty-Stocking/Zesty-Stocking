@@ -6,13 +6,12 @@ import {
   Image
 } from 'react-native';
 import Button from '../common/button';
-var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
+var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp || 'localhost';
+var prodHost = require('../../helpers/scaffolding.js').prodHost || null;
 
-//This is where we put our backend oauth endpoint url
-const host = myLocalIp || 'localhost';
-const OAuthURL = `http://${host}:4568/auth/github`
-// const OAuthURL = 'http://github.com';
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
 
+const OAuthURL = `${host}/auth/github`
 
 class Signin extends Component {
   constructor(props) {

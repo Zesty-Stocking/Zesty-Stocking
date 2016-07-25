@@ -21,4 +21,16 @@ To start the local server, first start the mysql server (if not already running)
 
       $ npm start
 
-  
+
+To configure production on Heroku, follow [these instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). Don't forget to set the following environment variables using 'heroku config':
+
+      GITHUB_CLIENT_ID
+      GITHUB_CLIENT_SECRET
+      JAWSDB_MARIA_URL (this one should be set automatically after you [provision a MariaDB database](https://devcenter.heroku.com/articles/jawsdb-maria) on Heroku)
+
+
+
+To deploy to production, run
+
+      $ git push heroku master
+      $ heroku open

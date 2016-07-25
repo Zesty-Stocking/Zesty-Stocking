@@ -6,10 +6,12 @@ import {
   AsyncStorage
 } from 'react-native';
 import NavBar from '../common/navBar';
-var myLocalIp = require('../../helpers/scaffolding').myLocalIp;
+var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp || 'localhost';
+var prodHost = require('../../helpers/scaffolding.js').prodHost || null;
 
-const host = myLocalIp || 'localhost';
-const TOKEN_URL = `http://${host}:4568/account?`
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
+
+const TOKEN_URL = `${host}/account?`
 
 class OAuthWebView extends Component {
   render() {

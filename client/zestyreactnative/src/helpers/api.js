@@ -1,7 +1,9 @@
-var myLocalIp = require('./scaffolding.js').myLocalIp;
+var myLocalIp = require('./scaffolding.js').myLocalIp || 'localhost';
+var prodHost = require('./scaffolding.js').prodHost || null;
 
-var ipAddress = myLocalIp || 'localhost';
-const baseUrl = `http://${ipAddress}:4568`;
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
+
+const baseUrl = `${host}`;
 
 module.exports.getMessages = () => {
   var url = `${baseUrl}/api/messages`;
