@@ -7,12 +7,11 @@ import {
 } from 'react-native';
 import Button from '../common/button';
 var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp || 'localhost';
-var prodHost = 'https://hashitout.herokuapp.com';
+var prodHost = require('../../helpers/scaffolding.js').prodHost || null;
 
-var host = process.env.JAWSDB_MARIA_URL ? prodHost : myLocalIp;
-var port = process.env.PORT || '4568';
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
 
-const OAuthURL = `http://${host}:${port}/auth/github`
+const OAuthURL = `${host}/auth/github`
 
 class Signin extends Component {
   constructor(props) {

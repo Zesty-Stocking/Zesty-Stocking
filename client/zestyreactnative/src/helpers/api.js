@@ -1,11 +1,9 @@
 var myLocalIp = require('./scaffolding.js').myLocalIp || 'localhost';
-var prodHost = 'https://hashitout.herokuapp.com';
+var prodHost = require('./scaffolding.js').prodHost || null;
 
-// check if app is running on Heroku (prod)
-var host = process.env.JAWSDB_MARIA_URL ? prodHost : myLocalIp;
-var port = process.env.PORT || '4568';
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
 
-const baseUrl = `http://${host}:${port}`;
+const baseUrl = `${host}`;
 
 module.exports.getMessages = () => {
   var url = `${baseUrl}/api/messages`;

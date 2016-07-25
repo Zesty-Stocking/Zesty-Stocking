@@ -6,13 +6,12 @@ import {
   AsyncStorage
 } from 'react-native';
 import NavBar from '../common/navBar';
-var myLocalIp = require('../../helpers/scaffolding').myLocalIp || 'localhost';
-var prodHost = 'https://hashitout.herokuapp.com';
+var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp || 'localhost';
+var prodHost = require('../../helpers/scaffolding.js').prodHost || null;
 
-var host = process.env.JAWSDB_MARIA_URL ? prodHost : myLocalIp;
-var port = process.env.PORT || '4568';
+var host = prodHost ? prodHost : 'http://' + myLocalIp + ':4568';
 
-const TOKEN_URL = `http://${host}:${port}/account?`
+const TOKEN_URL = `${host}/account?`
 
 class OAuthWebView extends Component {
   render() {
