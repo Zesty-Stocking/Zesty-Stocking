@@ -79,7 +79,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    width: 150,
     marginBottom: 10
   }
 });

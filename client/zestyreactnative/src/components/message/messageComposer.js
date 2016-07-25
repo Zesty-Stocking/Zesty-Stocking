@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    padding: 10
+    padding: 10,
+    alignItems: 'center'
   },
   textInput: {
     height: 210,
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     borderColor: '#0f0f0f',
     borderRadius: 5,
     marginTop: 10,
-    padding: 5
+    padding: 10
   }
 });
 

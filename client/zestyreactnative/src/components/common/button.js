@@ -27,6 +27,7 @@ var styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
+    width: 200,
     borderWidth: 1,
     borderRadius: 5,
     padding: 10,
