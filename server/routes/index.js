@@ -15,7 +15,7 @@ var ensureAuthenticated = function(req, res, next) {
 // USER-FACING ROUTES ======================================
 
 router.get('/account', ensureAuthenticated, function(req, res) {
-  res.json(req.user);
+  res.end();
 });
 
 router.get('/logout', function(req, res) {
