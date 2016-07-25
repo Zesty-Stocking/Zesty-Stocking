@@ -47,7 +47,7 @@ class Posts extends Component {
 
         <View style={ styles.buttonContainer } >
           <Button
-            style={ [ styles.button, border('olive') ] }
+            style={ [ styles.button ] }
             text={ 'Compose' }
             onPress={ this.onPressCompose } />
         </View>
