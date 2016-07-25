@@ -59,6 +59,7 @@ class MessageComposer extends Component {
       <View style={ styles.container }>
         <NavBar
           navigator={ this.props.navigator }
+          title={ { title: 'Compose a Byte', tintColor: '#333' }}
         />
         <TextInput
           style={ styles.textInput }
