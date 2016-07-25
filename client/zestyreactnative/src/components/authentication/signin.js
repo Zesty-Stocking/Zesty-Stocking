@@ -6,13 +6,13 @@ import {
   Image
 } from 'react-native';
 import Button from '../common/button';
-var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp;
+var myLocalIp = require('../../helpers/scaffolding.js').myLocalIp || 'localhost';
+var prodHost = 'https://hashitout.herokuapp.com';
 
-//This is where we put our backend oauth endpoint url
-const host = myLocalIp || 'localhost';
-const OAuthURL = `http://${host}:4568/auth/github`
-// const OAuthURL = 'http://github.com';
+var host = process.env.JAWSDB_MARIA_URL ? prodHost : myLocalIp;
+var port = process.env.PORT || '4568';
 
+const OAuthURL = `http://${host}:${port}/auth/github`
 
 class Signin extends Component {
   constructor(props) {
