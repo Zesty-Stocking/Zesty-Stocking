@@ -26,7 +26,7 @@ var Button = ({ text, onPress, disabled, style }) => {
 var styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'center',
     width: 200,
     borderWidth: 1,
     borderRadius: 5,
