@@ -19,7 +19,7 @@ class OAuthWebView extends Component {
     };
 
     var titleConfig = {
-      title: 'Sign in with Github',
+      title: 'Sign in with GitHub',
     };
 
     return (

@@ -6,7 +6,7 @@ const defaults ={
 };
 
 const defaultTitle = {
-  title: 'hashItOut',
+  title: 'HashItOut',
   tintColor: defaults.tintColor
 };
 
