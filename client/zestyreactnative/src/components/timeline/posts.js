@@ -6,10 +6,14 @@ import {
   View,
   ScrollView
 } from 'react-native';
+
 import Spinner from 'react-native-loading-spinner-overlay';
 import MessageList from '../message/messageList';
 import NavBar from '../common/navBar';
 import Button from '../common/button';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import { getMessages, getLogout } from '../../helpers/api';
 
 class Posts extends Component {
@@ -94,7 +98,17 @@ class Posts extends Component {
 
         <View>
           <MessageList data={this.state.data} error={this.state.error} />
+          {/*
+            //trying to get action button to work -- icons still not working
+          <ActionButton.Item
+            buttonColor="rgba(231,76,60,1)"
+            onPress={() => { console.log("hi")}}
+          >
+           <Icon />
+          </ActionButton.Item>
+        */}
         </View>
+
       </ScrollView>
     );
   }
