@@ -31,6 +31,7 @@ class OAuthWebView extends Component {
         <WebView
           source={{uri: this.props.route.url}}
           style={styles.webview}
+          startInLoadingState={true}
           onNavigationStateChange={this.onNavigationStateChange.bind(this)} />
       </View>
     );
