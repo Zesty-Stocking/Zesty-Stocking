@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import MessageList from '../message/messageList';
@@ -41,7 +42,7 @@ class Posts extends Component {
 
   render() {
     return (
-      <View style={ [ styles.container, border('red') ] }>
+      <ScrollView style={ [ styles.container, border('red') ] }>
         <Text style={ styles.header}>Posts</Text>
 
         <View style={ styles.buttonContainer } >
@@ -58,7 +59,7 @@ class Posts extends Component {
         <View>
           <MessageList data={this.state.data} error={this.state.error} />
         </View>
-      </View>
+      </ScrollView>
     );
   }
 
