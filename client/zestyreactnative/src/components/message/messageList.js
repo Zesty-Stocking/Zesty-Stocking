@@ -35,6 +35,7 @@ class MessageList extends Component {
         <ListView
           dataSource={ ds.cloneWithRows(this.props.data) }
           renderRow={ this.renderMessage }
+          enableEmptySections
         />
       </View>
     );

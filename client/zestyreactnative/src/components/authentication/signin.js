@@ -30,10 +30,10 @@ class Signin extends Component {
             resizeMode='contain' />
         </View>
         <View style={ [ styles.bottom ] } >
-          <Text style={styles.title}>by Zesty Stocking</Text>
+          <Text style={styles.title}>#HashItOut</Text>
           <Button
             style={styles.button}
-            text={'Sign in with Github'}
+            text={'Sign in with GitHub'}
             onPress={this.onPress}
           />
         </View>
