@@ -35,7 +35,7 @@ module.exports.postMessage = (text, accessToken) => {
     .catch((err) =>  err );
 };
 
-module.exports.logout = () => {
+module.exports.getLogout = () => {
   var url = `${baseUrl}/logout`;
 
   return fetch(url)
