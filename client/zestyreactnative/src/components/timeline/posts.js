@@ -61,6 +61,11 @@ class Posts extends Component {
   };
 
   render() {
+    var title = {
+      title: 'Bytes',
+      tintColor: '#333'
+    };
+
     var leftButton = {
       title: 'Sign Out',
       tintColor: '#333',
@@ -71,14 +76,14 @@ class Posts extends Component {
       <ScrollView style={ styles.container }>
         <NavBar
           navigator={ this.props.navigator }
+          title={ title }
           leftButton={ leftButton }
         />
-        <Text style={ styles.header}>Bytes</Text>
 
         <View style={ styles.buttonContainer } >
           <Button
             style={ styles.button }
-            text={ 'Compose' }
+            text={ 'Compose a Byte' }
             onPress={ this.onPressCompose } />
         </View>
 
@@ -109,7 +114,7 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   button: {
-    width: 150,
+    width: 200,
     marginBottom: 10
   }
 });
