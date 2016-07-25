@@ -38,9 +38,18 @@ class Posts extends Component {
   }
 
   render() {
+    var leftButton = {
+      title: 'Sign Out',
+      tintColor: '#333',
+      handler: () => console.log('Tried to sign out')
+    };
+
     return (
       <View style={ styles.container }>
-        <NavBar navigator={ this.props.navigator } />
+        <NavBar
+          navigator={ this.props.navigator }
+          leftButton={ leftButton }
+        />
         <Text style={ styles.header}>Posts</Text>
 
         <View style={ styles.buttonContainer } >
