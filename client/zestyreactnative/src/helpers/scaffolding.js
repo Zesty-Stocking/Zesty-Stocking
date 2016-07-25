@@ -11,4 +11,4 @@ module.exports.border = color => {
 // local IP address here. It will change when you go to another WiFi network.
 // http://lifehacker.com/5833108/how-to-find-your-local-and-external-ip-address
 module.exports.myLocalIp = null;
-module.exports.prodHost = 'https://hashitout.herokuapp.com'; // comment this out if running locally
+// module.exports.prodHost = 'https://hashitout.herokuapp.com'; // comment this out if running locally
