@@ -20,11 +20,16 @@ const styles = StyleSheet.create({
   textInput: {
     height: 210,
     fontSize: 28,
+    marginTop: 10,
+    padding: 10
+  },
+  inputWrapper: {
+    alignSelf: 'stretch',
     borderWidth: 0.5,
     borderColor: '#0f0f0f',
     borderRadius: 5,
     marginTop: 10,
-    padding: 10
+    marginBottom: 10
   }
 });
 
@@ -59,19 +64,21 @@ class MessageComposer extends Component {
   render() {
     return (
       <View style={ styles.container }>
-        <TextInput
-          style={ styles.textInput }
-          placeholder='Type here'
-          autoFocus={true}
-          multiline={true}
-          numberOfLines={5}
-          maxLength={140}
-          onChangeText={ (text) => this.setState({ 
-            text: text,
-            buttonDisabled: false 
-            }) 
-          }
-        />
+        <View style={ styles.inputWrapper }>
+          <TextInput
+            style={ styles.textInput }
+            placeholder='Type here'
+            autoFocus={true}
+            multiline={true}
+            numberOfLines={5}
+            maxLength={140}
+            onChangeText={ (text) => this.setState({ 
+              text: text,
+              buttonDisabled: false 
+              }) 
+            }
+          />
+        </View>
 
         <Button
           text={ 'Send' }
