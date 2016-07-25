@@ -24,20 +24,17 @@ class Signin extends Component {
   render() {
     return(
       <View style={ styles.container } >
-        <View style={ [ styles.top ] } >
-          <Text style={styles.title}>#HashItOut</Text>
-          <Image
-            source={ require('../../assets/hashtag.png') }
-            style={ styles.image }
-            resizeMode='contain' />
-        </View>
-        <View style={ [ styles.bottom ] } >
-          <Button
-            style={styles.button}
-            text={'Sign in with GitHub'}
-            onPress={this.onPress}
-          />
-        </View>
+        <Text style={styles.title}>#HashItOut</Text>
+        <Image
+          source={ require('../../assets/hashtag.png') }
+          style={ styles.image }
+          resizeMode='contain' 
+        />
+        <Button
+          style={styles.button}
+          text={'Sign in with GitHub'}
+          onPress={this.onPress}
+        />
       </View>
     );
   }
@@ -54,17 +51,8 @@ var styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'space-around',
     alignItems: 'center',
-  },
-  top: {
-    flex: 5,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
     marginTop: 50,
-  },
-  bottom: {
-    flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginBottom: 50,
   },
   image: {
     flex: 1,
