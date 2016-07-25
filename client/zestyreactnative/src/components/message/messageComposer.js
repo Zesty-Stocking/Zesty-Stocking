@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
     padding: 10,
-    alignItems: 'center'
   },
   textInput: {
     height: 210,
