@@ -3,7 +3,7 @@
 ## Setting up React Native
 
 The idea is to write one code base for Android & iOS devices. Setup for both
-platforms is similar and we'll try to walk you through both.
+platforms is similar and this guide will walk you through both.
 
 ### Helpful links
 
@@ -18,28 +18,48 @@ These are things you need to have to run code on either iOS or Android.
 * react-native-cli
   * `npm install -g react-native-cli`
 
-##### Android only
+##### Install the project dependencies
 
-* Android Studio
+```sh
+# server side dependencies
+npm install
 
-##### iOS only
-
-* XCode
+# client side dependencies
+cd client/zestyreactnative && npm install
+```
 
 ##### Optional (for iOS or Android), but recommended  
 
 * watchman (helpful for hot reloading)
   * installation will be specific to your computer's operating system
 
+##### Android only
+
+* Android Studio
+* Gradle (optional, but can speed up build times)
+
+##### iOS only
+
+* XCode
+
 ---
 
-## Running our application
+## Running the application
 
-* run the emulator or connect a device to your computer
-* run the (node) server
-* run the react native packager server
+It may be helpful to have one terminal tab open per process
+
+1. run the (node) server from the root directory of this project
+  * `npm start` if IOS only
+  * `myLocalIP=123.45.678.90 npm start` if running Android
+1. run the react native packager server from `client/zestyreactnative`
+  * `react-native run-ios` AND/OR `react-native run-android`
+1. run the client packager server from `client/zestyreactnative`
+  * `npm start`
+1. run the emulator or connect a device to your computer
 
 ### Android
+
+*If you are not writing for Android, then skip down to the iOS section.*
 
 Something to note, if you are developing for Android you will have to
 manually set the authentication endpoints with the local IP address of your
@@ -48,7 +68,8 @@ computer.
 ##### Why do I need the local IP of my computer?
 
 An Android emulator has its own IP address. So if the client code sees an
-address with `localhost`, it will
+address with `localhost`, it will think to look for a port on its own device
+instead of an endpoint on your local Node server. [Credit](http://stackoverflow.com/a/33978246/2908123)
 
 ##### How do I get my local IP address?
 
@@ -56,10 +77,18 @@ address with `localhost`, it will
 ifconfig | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p'
 ```
 
+Or if you have a Mac, you can try this:
+
 [Find your IP address on a Mac](http://www.wikihow.com/Find-Your-IP-Address-on-a-Mac)
+
+##### OK, I have my IP. Now what?
 
 Once you have this number, export it from the file:
 `client/zestyreactnative/src/helpers/scaffolding.js`
+
+```js
+module.exports.myLocalIp = '123.45.678.90';
+```
 
 ##### Back-end server
 
