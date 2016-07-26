@@ -27,9 +27,9 @@ export default class Message extends Component {
               <CardItem>
                 <Thumbnail 
                   style={ styles.photo }
-                  source={{uri: this.avatarUrl}} />
-                <Text style={{fontWeight: 'bold'}}>{this.name ? this.name : this.username}</Text>
-                <Text note>{ `@${this.username}` }</Text>
+                  source={{uri: this.props.avatarUrl}} />
+                <Text style={{fontWeight: 'bold'}}>{this.props.name ? this.props.name : this.props.username}</Text>
+                <Text note>{ `@${this.props.username}` }</Text>
                 <Text note>{this.props.createdAt}</Text>
               </CardItem>
 
