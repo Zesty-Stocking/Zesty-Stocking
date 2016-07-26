@@ -14,5 +14,9 @@ module.exports.border = color => {
  * http://lifehacker.com/5833108/how-to-find-your-local-and-external-ip-address
  */
 
+// Use this if doing development.
+// If doing production, comment out the line regarding `myLocalIp`
 module.exports.myLocalIp = null;
-// module.exports.prodHost = 'https://hashitout.herokuapp.com'; // comment this out if running locally
+
+// If doing production: uncomment this line
+// module.exports.prodHost = 'https://hashitout.herokuapp.com';
