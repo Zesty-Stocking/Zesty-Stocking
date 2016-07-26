@@ -21,6 +21,10 @@ class MessageList extends Component {
     return (
       <Message
         User={ User }
+        username={User.username}
+        name={User.name}
+        location={User.location}
+        avatarUrl={User.avatarUrl}
         text={ text }
         likes={ likes }
         createdAt={ createdAt }
