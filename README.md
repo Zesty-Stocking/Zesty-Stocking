@@ -1,11 +1,25 @@
 # Zesty-Stocking
 
-Install dependencies:
+## Installation list
 
-      $ npm install
+These are things you need to have to run code on either iOS or Android.
 
-Then [install MariaDB](https://mariadb.com/kb/en/mariadb/building-mariadb-on-mac-os-x-using-homebrew/). When installing, set both your username and your password to 'root'
+* react-native-cli
+  * `npm install -g react-native-cli`
 
+#### Project dependencies
+
+```sh
+# server side dependencies
+npm install
+
+# client side dependencies
+cd client/zestyreactnative && npm install
+```
+
+### Database setup
+
+[Install MariaDB](https://mariadb.com/kb/en/mariadb/building-mariadb-on-mac-os-x-using-homebrew/). When installing, set both your username and your password to 'root'
 
 Start up mysql server and then create the database:
 
@@ -15,11 +29,7 @@ Start up mysql server and then create the database:
       MariaDB [(none)]> use zestydb;
       MariaDB [(none)]> exit;
 
----
-
-## Client Setup
-
-### Setting up React Native
+### Client Setup (React Native)
 
 The idea is to write one code base for Android & iOS devices. Setup for both
 platforms is similar and this guide will walk you through both.
@@ -30,24 +40,7 @@ platforms is similar and this guide will walk you through both.
 * [Troubleshooting](http://facebook.github.io/react-native/docs/troubleshooting.html)
 * [Installation & setup for Mac & iOS](https://github.com/checkraiser/beginning-react-native/blob/master/1.Installation_and_setup.md)
 
-### Installation list
-
-These are things you need to have to run code on either iOS or Android.
-
-* react-native-cli
-  * `npm install -g react-native-cli`
-
-##### Install the project dependencies
-
-```sh
-# server side dependencies
-npm install
-
-# client side dependencies
-cd client/zestyreactnative && npm install
-```
-
-##### Optional (for iOS or Android), but recommended  
+##### Optional (for iOS or Android), but recommended
 
 * watchman (helpful for hot reloading)
   * installation will be specific to your computer's operating system
@@ -109,6 +102,16 @@ Once you have this number, export it from the file:
 module.exports.myLocalIp = '123.45.678.90';
 ```
 
+##### One more thing about local IP
+
+To get the authentication working for Android development, you must also modify
+the callback URL on your GitHub profile.
+
+* [GitHub Profile Developer Settings](https://github.com/settings/developers)
+
+Register a new application, include the local IP into your callback URL. If you
+need help, please ask a Zesty Stocking team member.
+
 ##### Back-end server
 
 ```sh
@@ -141,13 +144,19 @@ react-native run-ios
 
 ## Production
 
+### Configuration
+
 To configure production on Heroku, follow [these instructions](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction). Don't forget to set the following environment variables using 'heroku config':
 
       GITHUB_CLIENT_ID
       GITHUB_CLIENT_SECRET
       JAWSDB_MARIA_URL (this one should be set automatically after you [provision a MariaDB database](https://devcenter.heroku.com/articles/jawsdb-maria) on Heroku)
 
+Also, be sure to modify the file:
+`client/zestyreactnative/src/helpers/scaffolding` by following the instructions
+in the last section.
 
+### Deployment
 
 To deploy to production, run
 
